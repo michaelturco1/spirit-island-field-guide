@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="An unofficial field-notebook guide to all 37 Spirit Island spirits, sorted by habitat, with original watercolor plates and three-turn openings.">
+<style>img{max-width:100%}[hidden]{display:none!important}body{margin:0}</style>
+<title>Spirit Island Field Notebook</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Kalam:wght@300;400;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an open field notebook on a canvas satchel. Left page = taped plate, pencil caption, associated species;
+   right page = ruled field notes with a margin column; habitat divider tabs on the fore-edge. Single paper theme by choice.
+   Type: IM Fell (printed text), Kalam (marginalia only), Plex Mono (catalogue data only). */
+:root{
+  color-scheme: light;
+  --canvas:#55584A; --canvas-ink:#EEE8D6; --canvas-dim:#D3CEBB;
+  --paper:#F3EDDC; --paper-edge:#E4DBC3;
+  --rule:#AFC0CC; --margin:#C9806F;
+  --ink:#1F2B3D; --graphite:#4F4E48; --faint:#6E6B61;
+  --stamp:#B02A37;
+  --t-contents:#E4DBC3; --kraft:#D9CDAE; --t-sky:#9AA3AE; --t-coast:#93ABA8; --t-wet:#AEB596; --t-jungle:#8A9A78; --t-stone:#ADA08A; --t-sands:#CFB57F; --t-night:#8E8898;
+  --f-display:"IM Fell English","Iowan Old Style",Palatino,Georgia,serif;
+  --f-hand:"Kalam","Bradley Hand","Segoe Print",cursive;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --line:26px; --tabw:44px;
+}
+*{box-sizing:border-box}
+body{background:var(--canvas);color:var(--ink);font:400 18px/var(--line) var(--f-display)}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+.desk{max-width:1320px;margin:0 auto;padding-block:22px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:14px}
+.desk>.masthead,.desk>.colophon{margin-right:var(--tabw)}
+.masthead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;color:var(--canvas-ink)}
+.masthead a{font:400 22px/1 var(--f-display);text-decoration:none}
+.masthead span{font:500 10.5px/1.4 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--canvas-dim)}
+
+/* index by trait (filters), printed on the contents page */
+.index{display:grid;gap:10px;border-top:1px solid rgba(79,78,72,.3);padding-top:8px}
+.index h2{font:400 13px/26px var(--f-display);letter-spacing:.16em;text-transform:uppercase;color:var(--graphite);margin:0;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.fgroup{display:flex;flex-wrap:wrap;align-items:center;gap:4px 4px;min-width:0}
+.fgroup>span{font:italic 400 16px/26px var(--f-display);color:var(--graphite);width:92px}
+.opt{background:none;border:1px solid rgba(79,78,72,.28);padding:4px 7px 3px;cursor:pointer;font:500 10.5px/1.2 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.opt:hover{border-color:var(--ink)}
+.opt[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.fcount{font:500 10.5px/26px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--graphite);display:flex;gap:10px;align-items:baseline}
+.clear{background:none;border:0;padding:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--ink);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.filtered{font:500 10.5px/26px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin:0}
+.filtered button{background:none;border:0;padding:0 0 0 8px;font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+
+/* the book */
+.book{display:grid;grid-template-columns:minmax(0,1fr) var(--tabw)}
+.spread{display:grid;grid-template-columns:1fr 1fr;background:var(--paper);box-shadow:0 18px 30px -18px rgba(0,0,0,.55),0 2px 0 var(--paper-edge),0 4px 0 #d8cdb1,0 6px 0 #cbbf9f;border-radius:3px 0 0 3px;min-width:0}
+.page{position:relative;padding:34px 40px 60px;min-width:0}
+.page.left{background:linear-gradient(90deg,transparent calc(100% - 30px),rgba(80,64,30,.15) 100%);display:flex;flex-direction:column}
+.page.right{background:linear-gradient(90deg,rgba(80,64,30,.15) 0,transparent 30px),repeating-linear-gradient(transparent 0 25px,var(--rule) 25px 26px);background-position:0 0,0 14px;padding-left:150px}
+.page.right::before{content:"";position:absolute;top:0;bottom:0;left:132px;width:1px;background:var(--margin);opacity:.65}
+.page.right.plain{padding-left:56px}
+.page.right.plain::before{display:none}
+
+/* fore-edge tabs */
+.tabs{display:flex;flex-direction:column;gap:2px;padding-top:0}
+.tab{writing-mode:vertical-rl;border:0;cursor:pointer;padding:12px 0;width:30px;min-height:104px;border-radius:0 5px 5px 0;font:500 10px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:#3a3832;background:var(--kraft);display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:inset 4px 0 5px -3px rgba(0,0,0,.3);transition:width .15s}
+.tab small{font:500 10px/1 var(--f-mono)}
+.tab:hover{width:36px}
+.tab[aria-current="true"]{width:var(--tabw);box-shadow:none;background:var(--tc);color:#1d1c19}
+.tab.empty{opacity:.4}
+
+/* left page */
+.plate-col{flex:1;display:flex;flex-direction:column;align-items:center}
+.plate{position:relative;width:100%;max-width:540px;margin:0;transform:rotate(-.8deg);mix-blend-mode:multiply}
+.plate img{display:block;width:100%;height:auto;aspect-ratio:720/894}
+.caption{margin-bottom:34px!important;font:italic 400 18px/26px var(--f-display);color:var(--graphite);text-align:center;max-width:34ch;margin:10px 0 0;text-wrap:balance}
+.caption b{font-style:normal;font-weight:400;letter-spacing:.08em;color:var(--ink);margin-right:4px}
+.assoc{width:100%;max-width:540px;margin-top:0;padding-top:0;border-top:1px solid rgba(91,90,84,.3)}
+.assoc h2,h2.sec{font:400 13px/26px var(--f-display);letter-spacing:.16em;text-transform:uppercase;color:var(--graphite);margin:26px 0 0}
+.assoc h2{margin-top:8px}
+.assoc ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.assoc li{font:400 16.5px/24px var(--f-display);color:var(--graphite)}
+.assoc a,.assoc .nm{display:block;font:400 15px/26px var(--f-display);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+.assoc a:hover{text-decoration:underline}
+
+/* page turns */
+.turn{position:absolute;bottom:18px;background:none;border:0;cursor:pointer;font:500 10.5px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--graphite);padding:8px 4px}
+.turn:hover{color:var(--ink)}
+.turn.prev{left:32px}.turn.next{right:32px}
+
+/* right page */
+.margin-notes{position:absolute;left:18px;width:104px;font:400 16px/26px var(--f-hand);color:var(--graphite);transform:rotate(-1.5deg)}
+.margin-notes b{display:block;font:500 9.5px/26px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.kicker{font:500 11.5px/26px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:0;display:flex;justify-content:space-between;gap:12px}
+h1.name{font:400 clamp(30px,3.1vw,40px)/52px var(--f-display);margin:0;letter-spacing:-.005em;text-wrap:balance}
+.tagline{font:italic 400 19px/26px var(--f-display);color:var(--graphite);margin:0}
+.marks{min-height:52px;padding-top:4px}
+.meta{font:500 11.5px/26px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--graphite)}
+.notes p{margin:0}
+.pm{display:grid;grid-template-columns:1fr 1fr;gap:0 26px}
+.pm ul{list-style:none;margin:0;padding:0}
+.pm li{padding-left:18px;position:relative}
+.pm li::before{position:absolute;left:0;font-family:var(--f-mono);color:var(--graphite)}
+.pm .plus li::before{content:"+"}
+.pm .minus li::before{content:"−"}
+
+/* opening log: one dated entry at a time */
+.log-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.log-head small{font:italic 400 16px/26px var(--f-display);color:var(--graphite)}
+.daybar{list-style:none;margin:26px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);position:relative}
+.daybar::before{content:"";position:absolute;left:16.66%;right:16.66%;top:12px;border-top:1.5px dashed var(--faint)}
+.daybar button{position:relative;width:100%;height:78px;background:none;border:0;cursor:pointer;display:grid;justify-items:center;align-content:start;padding:3px 0 0;color:var(--graphite)}
+.daybar .dot{width:19px;height:19px;border-radius:50%;border:1.5px solid var(--ink);background:var(--paper);display:grid;place-items:center;font:500 9.5px/1 var(--f-mono);color:var(--ink)}
+.daybar b{font:400 18px/26px var(--f-display);margin-top:4px}
+.daybar span{font:500 9.5px/14px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.daybar button:hover b{text-decoration:underline;text-underline-offset:4px}
+.daybar button[aria-current="step"]{color:var(--ink)}
+.daybar button[aria-current="step"] .dot{background:var(--ink);color:var(--paper)}
+.daybar button.done .dot{background:var(--paper-edge)}
+.entry{margin-top:0;position:relative}
+.entry::before{content:"";position:absolute;top:-1px;left:0;right:0;border-top:1.5px solid var(--ink)}
+.entry dl{margin:0;display:grid;grid-template-columns:90px minmax(0,1fr)}
+.entry dt{font:400 17px/26px var(--f-hand);color:var(--graphite)}
+.entry dd{margin:0}
+.entry .why{margin-top:26px}
+.pager{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:13px;min-height:52px;flex-wrap:wrap}
+.pager button{height:40px;padding:0 16px;border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;font:500 11.5px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+.pager button:hover{background:var(--paper-edge)}
+.pager button.primary{background:var(--ink);color:var(--paper);margin-left:auto}
+.pager button.primary:hover{background:#2f3f57}
+.refs{margin-top:13px;font:400 11.5px/26px var(--f-mono);color:var(--graphite)}
+.refs a{color:var(--graphite)}
+
+/* contents spread */
+.title-page{display:grid;align-content:start;gap:26px;max-width:440px;margin:0 auto;padding-top:30px}
+.title-page h1{font:400 clamp(38px,4.6vw,58px)/1.02 var(--f-display);margin:0;text-wrap:balance}
+.title-page h1 i{color:var(--graphite)}
+.title-page .sub{font:italic 400 20px/26px var(--f-display);color:var(--graphite);margin:0}
+.found{border:1.5px solid var(--ink);padding:14px 16px;font:400 17px/24px var(--f-hand);transform:rotate(-.6deg)}
+.found b{display:block;font:500 10.5px/18px var(--f-mono);letter-spacing:.14em;text-transform:uppercase}
+.key{display:grid;grid-template-columns:auto 1fr;gap:12px 16px;align-items:baseline;font:400 16px/22px var(--f-display);margin:0}
+.key dt{justify-self:start}
+.key dd{margin:0;color:var(--graphite)}
+.toc h2{font:400 26px/52px var(--f-display);margin:0;display:flex;align-items:center;gap:10px}
+.toc h2 i{width:12px;height:20px;display:inline-block;border-radius:0 3px 3px 0}
+.toc ol{list-style:none;margin:0;padding:0}
+.toc a{display:flex;align-items:baseline;gap:8px;text-decoration:none;height:26px}
+.toc a .n{font:400 11px var(--f-mono);color:var(--faint);width:20px}
+.toc a .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.toc a .d{flex:1;border-bottom:1.5px dotted var(--faint);transform:translateY(-6px);min-width:12px}
+.toc a .c{font:500 10px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--graphite);white-space:nowrap}
+.toc a:hover .t{text-decoration:underline}
+.toc li.out{opacity:.3}
+.none{font:italic 400 19px/26px var(--f-display);color:var(--stamp)}
+.colophon{color:var(--canvas-dim);font:400 11.5px/1.6 var(--f-mono);letter-spacing:.03em;max-width:80ch;margin:6px 0 0}
+
+@media (max-width:900px){
+  .desk>.masthead,.desk>.colophon{margin-right:0}
+  .book{grid-template-columns:1fr}
+  .tabs{flex-direction:row;flex-wrap:wrap;order:-1;gap:2px}
+  .tab{writing-mode:horizontal-tb;min-height:0;width:auto!important;padding:10px 10px;border-radius:5px 5px 0 0;flex:1 1 auto;box-shadow:inset 0 -4px 5px -3px rgba(0,0,0,.3)}
+  .tab:hover{width:auto}
+  .spread{grid-template-columns:1fr;border-radius:0 0 3px 3px}
+  .page.left{background:none;padding-bottom:26px}
+  .page.right{background:repeating-linear-gradient(transparent 0 25px,var(--rule) 25px 26px);background-position:0 14px;border-top:1px dashed var(--paper-edge);padding-left:52px}
+  .page.right::before{left:34px}
+  .margin-notes{position:static;width:auto;transform:none}
+  .margin-notes b{display:inline;margin-right:8px}
+  .page.left .turn{display:none}
+  .turn.next{right:16px}
+}
+@media (max-width:520px){
+  .page{padding:26px 18px 60px}
+  .page.right{padding-left:36px;background-position:0 12px}
+  .page.right::before{left:22px}
+  .page.right.plain{padding-left:18px}
+  .pm{grid-template-columns:1fr}
+  .entry dl{grid-template-columns:76px minmax(0,1fr)}
+  .fgroup>span{width:100%}
+  .pager button{flex:1 1 auto}
+}
+@media (prefers-reduced-motion:no-preference){
+  .flip{animation:flip .28s ease-out}
+  @keyframes flip{from{opacity:.4;transform:translateX(6px)}to{opacity:1;transform:none}}
+}
+</style>
+
+</head>
+<body>
+<div class="desk">
+  <header class="masthead"><a href="#contents">Field Notes on the Spirits of the Island</a><span>37 specimens · 7 habitats</span></header>
+
+  <div class="book">
+    <div class="spread" id="spread">
+      <article class="page left" id="left"></article>
+      <article class="page right" id="right"></article>
+    </div>
+    <nav class="tabs" id="tabs" aria-label="Habitat chapters"></nav>
+  </div>
+
+  <p class="colophon">Unofficial fan guide. Spirit Island is a game by R. Eric Reuss, published by Greater Than Games. Plates are original watercolor studies of each spirit's terrain, not game art. Openings are compiled from the community sources listed on each page.</p>
+</div>
+
+<script>
+// Spirit Island field guide data, part A: Base game + Branch & Claw.
+// All prose written fresh; openings cross-checked against the sources listed per spirit.
+const SPIRITS_A = [
+{
+ id:"lightning", name:"Lightning's Swift Strike", exp:"Base Game", cx:"Low", el:["Fire","Air"], land:"storm",
+ tag:"A sky-split strike that flattens towns before they take root.",
+ wins:"Lightning wins by deleting buildings in bursts. It plays lots of cheap Fire/Air cards, and once three of them land, its innate Thundering Destruction knocks down a Town (or a City at higher thresholds). Its special rule lets it resolve its own slow powers fast, and Lightning's Boon hands that speed to an ally.",
+ strong:["Burst removal of Towns and Cities","Most card plays of any base spirit","Lending speed so an ally's slow power lands in time"],
+ weak:["Thin energy and few new cards (it only drafts when it reclaims)","Explorers and blight defence","Narrow elements make Major Powers awkward"],
+ pairs:[["Vital Strength of the Earth","Vital's Defend 3 covers the blight Lightning ignores, and Gift of Strength can repeat Lightning's cheap cards."],["River Surges in Sunlight","River pushes explorers and hands over energy with Boon of Vigor, which is exactly what Lightning lacks."],["Ocean's Hungry Grasp","Tidal Boon's energy funds Lightning's bigger turns while Ocean polices the coast."]],
+ setup:"2 Presence in the highest-numbered Sands.",
+ open:[
+  {g:"Add two Presence (range 1), both from the Energy track.",c:"Shatter Homesteads only.",p:"Fan out toward the inland Town so you have a second foothold for range.",why:"Uncovering energy now pays for a three-card turn next round. Holding three cards back is what lets Thundering Destruction fire on turn 2. Only make Shatter fast if killing the Town now leaves the newly explored lands with nothing to build from."},
+  {g:"Add one Presence (range 2) and gain 3 energy; take it from the Card Plays track to reach 3 plays.",c:"Lightning's Boon, Raging Storm, Harbingers of the Lightning.",p:"Somewhere in range of the land your innate will hit.",why:"Three Fire/Air cards trigger Thundering Destruction for a second Town kill. Harbingers drops Dahan into a ravaging land to mop up explorers, and Boon goes to whichever ally has a slow power that needs to land early."},
+  {g:"Reclaim, gain a Power Card (Minor), +1 energy.",c:"Shatter, Boon, Harbingers, or swap in the new Minor if it carries Fire.",p:"None this turn.",why:"Your income now covers three cards plus the innate each round. The single best draft is a 0-cost Fire Minor, because it keeps the three-card loop free."}],
+ conf:"Established", src:["wiki:Lightning's_Swift_Strike/Antistone's_Opening","codex:lightnings-swift-strike","gtg:phantaskippy-lightning"]
+},
+{
+ id:"river", name:"River Surges in Sunlight", exp:"Base Game", cx:"Low", el:["Sun","Water"], land:"river",
+ tag:"Sunlit floodwater that sweeps settlers off the land before they settle.",
+ wins:"River controls the board by moving Invaders out of lands just before they Build or Ravage. Its Wetland Presence counts as Sacred Sites, and its innate Massive Flooding scales from a push into outright destruction of Towns and Cities. Its starting cards carry exactly the Sun/Water mix the innate wants.",
+ strong:["Clearing explorers before they build","Free Sacred Sites in Wetlands","Feeding allies energy with Boon of Vigor"],
+ weak:["Low raw damage until Massive Flooding is maxed","Energy-tight, especially with events","Established Cities early on"],
+ pairs:[["Ocean's Hungry Grasp","Every River push toward the coast becomes a drowning."],["Lightning's Swift Strike","Lightning burns the buildings River can't move, and loves River's energy gift."],["Thunderspeaker","River's Bounty adds Dahan and River can push Invaders into Thunderspeaker's war parties."]],
+ setup:"1 Presence in the highest-numbered Wetland.",
+ open:[
+  {g:"Add two Presence (range 1), both from the Card Plays track.",c:"River's Bounty plus one more (Wash Away or Boon of Vigor).",p:"Wetlands where possible, since they count as Sacred Sites.",why:"Card plays are River's bottleneck, not elements. Its uniques already supply the Sun/Water Massive Flooding needs, so every extra play is more flood."},
+  {g:"Same growth again, both from the Card Plays track. This uncovers Reclaim One.",c:"Reclaim River's Bounty immediately, then play three cards (2 Sun, 3 Water).",p:"Toward the lands that will Build next.",why:"Bounty is both your energy engine and a Dahan multiplier. Pulling it straight back keeps the economy afloat while you hit level 2 of the innate."},
+  {g:"Reclaim all, gain a Power Card (Minor), +1 energy.",c:"River's Bounty and the new Minor. Keep 2 Sun, 3 Water, 1 Earth in hand.",p:"None this turn.",why:"This sets up turn 4, when the full starting hand plus Bounty reaches top-level Massive Flooding, and it keeps doing so every turn after."}],
+ conf:"Established", src:["hub:river-opening1","codex:river-surges-in-sunlight","bgg:1967085"]
+},
+{
+ id:"shadows", name:"Shadows Flicker Like Flame", exp:"Base Game", cx:"Low", el:["Moon","Fire"], land:"dusk",
+ tag:"Firelight and shadow that reach anywhere the Dahan stand.",
+ wins:"Shadows is a surgeon. For one energy it can target any land with Dahan regardless of range, so its cheap uniques (fear, pushes, Dahan protection) hit exactly where they're needed. Its innate Darkness Swallows the Unwary adds fear and damage as Moon and Fire pile up.",
+ strong:["Reach: any Dahan land is in range","Cheap, efficient starting cards","Fear and protecting Dahan with Concealing Shadows"],
+ weak:["Heavily built lands and Cities","The range trick taxes an already modest energy track","Needs a partner for raw damage"],
+ pairs:[["Thunderspeaker","Concealing Shadows keeps Thunderspeaker's war parties alive through Ravages."],["Vital Strength of the Earth","Vital holds the line while Shadows snipes problems across the island."],["Lightning's Swift Strike","Lightning brings the hammer Shadows lacks."]],
+ setup:"2 Presence in the highest-numbered Jungle, 1 in land #5.",
+ open:[
+  {g:"Gain a Power Card and add a Presence (range 1) from the Card Plays track.",c:"Two cheap uniques for the board: Crops Wither and Fade plus Concealing Shadows or Mantle of Dread.",p:"Toward the first Ravage land.",why:"Two plays from turn 1 keeps the cheap uniques flowing, and an early draft widens your answers."},
+  {g:"Add a Presence (range 3) and gain 3 energy, from the Energy track.",c:"Your two remaining uniques, or the Minor if its elements help the innate.",p:"Long jump toward a board that's falling behind.",why:"The long placement extends your footprint. The energy covers the 1-energy cost of targeting through the Dahan."},
+  {g:"Reclaim all and gain a Power Card.",c:"Two cards tuned to Moon/Fire for the innate.",p:"None this turn.",why:"Reclaiming with a draft keeps two plays a turn and grows the hand to six. By turn 4 you're at 2 plays and about 3 energy a turn, a stable base for Dahan support or a first Major."}],
+ conf:"Community standard", src:["wiki:Shadows_Flicker_Like_Flame","codex:shadows-flicker-like-flame","bgg:1971694"]
+},
+{
+ id:"vital", name:"Vital Strength of the Earth", exp:"Base Game", cx:"Low", el:["Sun","Earth","Plant"], land:"mountain",
+ tag:"Bedrock patience. Slow to move, impossible to break.",
+ wins:"Vital wins by refusing to lose ground. Every land with its Sacred Site has Defend 3. Its expensive uniques (A Year of Perfect Stillness, Rituals of Destruction) solve a whole land at once, and its innate Gift of Strength lets a spirit repeat a power card. Its energy track climbs high, so it ends the game slinging Major Powers.",
+ strong:["Defence and blight prevention","Excellent energy income","Late-game Major Powers; repeating allies' best cards"],
+ weak:["Only one card play for a long time","Adds one Presence per turn, no faster","Slow to learn new powers"],
+ pairs:[["Lightning's Swift Strike","Vital covers Lightning's lack of defence, and Gift of Strength can repeat Lightning's cheap cards."],["Thunderspeaker","Defended Dahan lands turn Ravages into Dahan counterattacks."],["Bringer of Dreams and Nightmares","Vital keeps blight off the board while Bringer races fear."]],
+ setup:"2 Presence in the highest-numbered Mountain, 1 in the highest-numbered Jungle.",
+ open:[
+  {g:"Add a Presence (range 1) and gain 2 energy, taken from the Card Plays track.",c:"Draw of the Fruitful Earth.",p:"Into a land that was just explored.",why:"Draw pulls Dahan and Presence where you'll need them, and you bank about 3 energy for an expensive card next round."},
+  {g:"Gain a Power Card (pick a 0 or 1 cost Minor) and add a Presence at range 0. Take it from the Card Plays track to reach 2 plays.",c:"The new Minor plus a 3-cost unique: A Year of Perfect Stillness or Rituals of Destruction.",p:"Stack onto an existing Presence to make a new Sacred Site.",why:"Your second play arrives just as you can afford a big card, and the range-0 placement turns that land into a Defend 3 fortress."},
+  {g:"If your Jungle was explored, add a Presence (+2 energy) from the Energy track; otherwise Reclaim and add a Presence at range 2.",c:"Minor plus a 3-cost card again.",p:"Toward the next Ravage.",why:"From here, walk the Energy track. Vital's income climbs steeply, and by turn 5 you can start drafting Majors."}],
+ conf:"Community standard", src:["codex:vital-strength-of-the-earth","wiki:Vital_Strength_of_the_Earth","bgg:1974592"]
+},
+{
+ id:"green", name:"A Spread of Rampant Green", exp:"Base Game", cx:"Moderate", el:["Moon","Plant","Water"], land:"overgrowth",
+ tag:"Vines over everything. Nothing gets built where the green has spread.",
+ wins:"Green puts Presence on the board faster than almost anyone, then spends it. Its special rule, Choke the Land with Green, lets it destroy one of its own Presence to stop a Build. Its innates crack buildings (Creepers Tear into Mortar) and defend lands (All-Enveloping Green), and Gift of Proliferation lets allies grow too.",
+ strong:["Stopping Builds outright","Fast, dense Presence","Defence plus helping allies spread"],
+ weak:["Explorers (foliage doesn't scare them)","Limited damage on its own","Placement puzzles: ranges and Sacred Site targeting"],
+ pairs:[["Lightning's Swift Strike","Green freezes the build-up and Lightning knocks down what's left."],["Sharp Fangs Behind the Leaves","Green defends, Fangs hunts the explorers Green can't handle."],["Thunderspeaker","Green's Defend sets up Dahan counterattacks Thunderspeaker can lead."]],
+ setup:"1 Presence in the highest-numbered Wetland, 1 in a Jungle without Blight.",
+ open:[
+  {g:"Add two Presence, one from each track, and take the extra card play this turn.",c:"Gift of Proliferation and Stem the Flow of Fresh Water.",p:"Set up so Stem (needs a Sacred Site, range 1) and Creepers (range 0) can hit the same Town.",why:"The Energy-track slot reveals the Moon you need for Creepers. Stem plus Creepers destroys a Town, and the Card Plays slot gives you two plays next turn. Consider Choke the Land to stop a turn-1 Build."},
+  {g:"Add a Presence from the Card Plays track, gain a Minor, gain 3 energy.",c:"Overgrow in a Night and Fields Choked with Growth.",p:"Overgrow places another Presence from the top track.",why:"Overgrow's placement reveals Plant mid-turn, which triggers All-Enveloping Green (Defend 2) and Creepers again. If the Minor has Plant, Moon and Water, swap it in for Fields for a Town kill without a combo."},
+  {g:"Reclaim.",c:"Re-sequence: Stem plus Creepers again, or your Minor.",p:"Per the reclaim option.",why:"Your hand is spent and the board is seeded. From here, alternate growth turns with a reclaim and keep Choke the Land for the Build that would hurt most."}],
+ conf:"Established", src:["wiki:A_Spread_of_Rampant_Green/Antistone's_Opening","codex:a-spread-of-rampant-green","bgg:1965751"]
+},
+{
+ id:"thunderspeaker", name:"Thunderspeaker", exp:"Base Game", cx:"Moderate", el:["Sun","Fire","Air"], land:"thunderhead",
+ tag:"A storm-voice marching with the Dahan, and the war parties it leads.",
+ wins:"Thunderspeaker fights through the Dahan. Its Presence travels with them, Gather the Warriors moves them into position, and Lead the Furious Assault turns two Dahan into a destroyed Town (three into a City). Manifestation of Power and Glory is a set-piece bomb when Presence and Dahan stack up.",
+ strong:["Mid-game destruction wherever Dahan gather","Moving Dahan and Presence together","Strong turn 1 with its big energy growth"],
+ weak:["Energy-poor until the track opens","Loses Presence when Dahan die beside it","Lands without Dahan; lower late-game ceiling"],
+ pairs:[["River Surges in Sunlight","Bounty adds Dahan and River pushes Invaders into your war parties."],["Shadows Flicker Like Flame","Concealing Shadows protects the Dahan you need."],["Vital Strength of the Earth","Defended Dahan survive Ravages and strike back."]],
+ setup:"1 Presence in each of the 2 lands with the most Dahan.",
+ open:[
+  {g:"Add a Presence (range 1) and gain 4 energy, from the Card Plays track (2 plays).",c:"Sudden Ambush plus Manifestation of Power and Glory. Use Voice of Thunder instead if Manifestation has no good target.",p:"Toward a land with a Town next to Dahan.",why:"The big energy bump funds a strong first turn. Ambush catches explorers before they build, and Manifestation spikes a stacked Dahan land."},
+  {g:"Add two Presence into lands with Dahan, both from the Energy track.",c:"Words of Warning plus your remaining starter.",p:"Lands with Dahan that will Ravage.",why:"Uncovers Air and Fire on the track. Words of Warning lets Dahan strike first so the opening Ravage becomes a Dahan win."},
+  {g:"Reclaim and gain two Power Cards (take Minors).",c:"Two cards that set up Lead the Furious Assault (Sun/Fire) or move Dahan.",p:"None this turn.",why:"Thunderspeaker only drafts on reclaim, but it takes two at once. Pick Dahan movers or Sun/Fire so the Furious Assault fires every turn."}],
+ conf:"Established", src:["hub:thunderspeaker-opening1","wiki:Thunderspeaker","bgg:1966212"]
+},
+{
+ id:"bringer", name:"Bringer of Dreams and Nightmares", exp:"Base Game", cx:"High", el:["Moon","Air","Animal"], land:"dreamdune",
+ tag:"It never kills. It just makes them wish they'd never come.",
+ wins:"Bringer turns fear into the main plan. Whenever its powers would damage or destroy, they instead scare and push, generating extra fear. Dahan counterattacks and Fear Cards are its only real kills. Call on Midnight's Dream fetches Major Powers, and Spirits May Yet Dream peeks at upcoming Fear Cards.",
+ strong:["The most fear in the game","Easy access to Major Powers","Foreseeing Fear Cards to plan around them"],
+ weak:["Can't destroy Invaders directly","Weak against blight cascades","Relies on Dahan and allies to actually clear lands"],
+ pairs:[["Sharp Fangs Behind the Leaves","Fangs kills what Bringer frightens, and the two cover each other's gaps."],["Vital Strength of the Earth","Vital keeps blight down while the fear deck empties."],["Lightning's Swift Strike","Pure removal to finish what fear starts."]],
+ setup:"2 Presence in the highest-numbered Sands.",
+ open:[
+  {g:"Add a Presence (range 1, from the top track to reveal Air) and gain a Minor.",c:"Predatory Nightmares and Dreams of the Dahan.",p:"Near the land you'll defend next turn.",why:"Air on the track triggers Spirits May Yet Dream (peek a Fear Card) and level 2 Night Terrors. Dreams gathers Dahan, ideally three, into an Explorer, Town and City land for next turn."},
+  {g:"Add a Presence into a land with Dahan (top track) and gain 2 energy.",c:"Dread Apparitions plus Call on Midnight's Dream (take the fear or a Major).",p:"Onto the Dahan land you're protecting.",why:"Resolve Dread Apparitions first, then Night Terrors at range 0. The fear converts to Defend, and three Dahan can wipe the whole stack. Calling a Major now gives you a big tool early."},
+  {g:"Reclaim One plus a range-0 Presence to make a Sacred Site.",c:"The Major if it's good, plus your Minor.",p:"Stack for a Sacred Site, since many Majors need one.",why:"Reclaim One lets you replay your best card while still growing. Bringer avoids full reclaims because they're its slowest growth."}],
+ conf:"Established", src:["wiki:Bringer_of_Dreams_and_Nightmares/Antistone's_Opening","wiki:Bringer_of_Dreams_and_Nightmares/breppert's_Opening","codex:bringer-of-dreams-and-nightmares"]
+},
+{
+ id:"ocean", name:"Ocean's Hungry Grasp", exp:"Base Game", cx:"High", el:["Moon","Water","Earth"], land:"sea",
+ tag:"The tide that takes the coast back, and swallows whatever is pushed in.",
+ wins:"Ocean turns every ocean on a board with its Presence into a drowning pit. Anything pushed in is destroyed and converted into energy. Its innates drown Towns and Cities on the coast and grind out fear. Its Presence ebbs and flows: out to sea to reclaim, onto the shore to strike.",
+ strong:["Coastal lands, where Invaders start strongest","Energy from drowning, enough for Majors in small games","Huge synergy with any spirit that pushes"],
+ weak:["Can't place Presence inland","Tide timing is tricky to manage","Energy income falls at higher player counts"],
+ pairs:[["River Surges in Sunlight","River's pushes become drownings."],["Lightning's Swift Strike","Tidal Boon funds Lightning; Lightning handles the inland Ocean can't reach."],["Lure of the Deep Wilderness","Lure owns the interior while Ocean owns the shore."]],
+ setup:"1 Presence in the Ocean, 1 in a Coastal land of your choice.",
+ open:[
+  {g:"Add two Presence into oceans and gain 1 energy.",c:"Call of the Deeps, plus Tidal Boon if an ally can push a Town seaward.",p:"Oceans next to spirits that can push.",why:"Ocean Presence makes every ocean a drowning pit for the whole team. Call of the Deeps pulls explorers into the sea or keeps a coastal land from building."},
+  {g:"Push Presence out of each ocean, add a Presence to a coastal land, gain a Minor.",c:"Grasping Tide and Swallow the Land-Dwellers (plus the Minor).",p:"Onto the coast where Towns are, avoiding lands about to Ravage.",why:"Coastal Presence unlocks Ocean's range-0 tools. Drowned buildings refill your energy; prefer Water/Earth or Air Minors."},
+  {g:"Reclaim, gain a Power Card, +2 energy, and gather one Presence into each ocean.",c:"Plan around where Presence still stands.",p:"Pull back before the shore Ravages.",why:"Retreat to the sea to rebuild your hand, keeping a foothold on the coast where a building will be. Don't cluster everything in one spot."}],
+ conf:"Established", src:["wiki:Ocean's_Hungry_Grasp/Antistone's_Opening","codex:oceans-hungry-grasp","steam:ocean-ebb-flow"]
+},
+{
+ id:"keeper", name:"Keeper of the Forbidden Wilds", exp:"Branch & Claw", cx:"Moderate", el:["Sun","Fire","Plant"], land:"thornwild",
+ tag:"A wall of thorn and wrath. Trespassers are not forgiven.",
+ wins:"Keeper stakes out territory and holds it. Wilds tokens block Explores, Punish Those Who Trespass deals heavy damage that scales with Sun and Plant, and its energy track tops out higher than anyone's, so mid-to-late game it casts multiple Majors a turn. Creating a Sacred Site pushes the Dahan out of the way.",
+ strong:["Holding and clearing its own region","Huge energy, so multiple Majors per turn","Scaling damage from Sun/Plant"],
+ weak:["Slow early, and expansion needs Wilds or blight-free lands","Blight-heavy games box it in","Pushes Dahan away from its Sacred Sites"],
+ pairs:[["Lightning's Swift Strike","Boon of Growing Power funds Lightning; Lightning covers early tempo."],["Ocean's Hungry Grasp","Keeper holds the interior while Ocean holds the coast."],["A Spread of Rampant Green","Green's Gift of Proliferation helps Keeper spread past its placement limits."]],
+ setup:"1 Presence and 1 Wilds in the highest-numbered Jungle.",
+ open:[
+  {g:"Pick two: gain a Minor, and +1 energy with a Presence (the starting land is the only legal spot). Take it from the top track, or the bottom if the Minor is a 0-cost Sun card.",c:"Boon of Growing Power (on yourself, or an ally if your draft was good).",p:"Your starting land.",why:"End the turn with at least 2 energy. Keeper's early game is about always affording its pay-3 growth for a second Presence."},
+  {g:"+1 energy with a Presence, and pay 3 energy for a Presence plus a Minor. Uncover two top and one bottom.",c:"Whatever gives 2 Sun and 1 Plant while keeping 2 energy in reserve.",p:"Lands with Wilds or your Presence; any blight-free land in a pinch.",why:"Two Presence a turn snowballs income. You reach 4 energy and 2 plays."},
+  {g:"Same two options, both Presence from the Card Plays track.",c:"Towering Wrath plus a Plant/Fire Minor and another Plant card.",p:"Make a Sacred Site where you'll Punish.",why:"Those elements trigger two levels of Punish for 4 to 5 damage. Keeper looks slow early but catches up in Stage II when Wilds start blocking explores."}],
+ conf:"Established", src:["codex:keeper-of-the-forbidden-wilds","bgg:1978655","wiki:Keeper_of_the_Forbidden_Wilds/Phantaskippy's_Guide"]
+},
+{
+ id:"fangs", name:"Sharp Fangs Behind the Leaves", exp:"Branch & Claw", cx:"Moderate", el:["Animal","Plant","Fire"], land:"canopy",
+ tag:"Eyes in the undergrowth. The jungle bites back.",
+ wins:"Fangs hunts with Beasts. Its innate Ranging Hunt moves Beasts and picks off a stray Explorer or Town most turns, and its uniques turn Beasts in Jungles into damage and fear. It's very fast out of the gate and great at keeping lands from ever building up.",
+ strong:["Fast early tempo","Picking off Explorers and Towns before they grow","Anything near Jungles and Beasts"],
+ weak:["Lower late-game power than ramp spirits","Blighted areas","Needs Beasts in the right place"],
+ pairs:[["Bringer of Dreams and Nightmares","Bringer scares, Fangs kills."],["A Spread of Rampant Green","Green defends and stops Builds while Fangs hunts."],["Many Minds Move as One","More Beasts, moved further, for Fangs to fight with."]],
+ setup:"1 Presence and 1 Beasts in the highest-numbered Jungle; 1 Beasts in any land with Dahan.",
+ open:[
+  {g:"Pick two: add a Presence from the top track, and gain a Minor.",c:"Two uniques for the board, such as Prey on the Builders and Teeth Gleam from Darkness.",p:"Toward Jungles near the first Explores.",why:"Early energy and an early draft. You're fishing for Animal/Plant Minors and blight answers."},
+  {g:"The same pair again: Presence (top) and a Minor.",c:"Two cards.",p:"Spread Beasts' reach.",why:"Three Minors in three turns gives good odds of finding key utility, and your starting hand alone can power Ranging Hunt for the next turns."},
+  {g:"Reclaim with a Minor, plus a Presence from the Card Plays track.",c:"One Animal card and one Plant card.",p:"Toward the next Build.",why:"Ranging Hunt with damage fires every turn from here. You reach 3 plays on turn 4, and you can pivot to Majors if the draft points that way."}],
+ conf:"Established", src:["hub:fangs-opening1","codex:sharp-fangs-behind-the-leaves","bgg:1978097"]
+}
+];
+
+// Part B: Feather & Flame (Promo Packs 1 & 2) + Jagged Earth.
+const SPIRITS_B = [
+{
+ id:"wildfire", name:"Heart of the Wildfire", exp:"Feather & Flame", cx:"High", el:["Fire","Plant"], land:"wildfire",
+ tag:"A grassfire that clears the land and leaves ash in its wake.",
+ wins:"Wildfire attacks just by spreading. Adding Presence is itself an action: its blight doesn't destroy its own Presence, and its Firestorm innate turns Fire elements and blighted lands into area damage. Every placement is a small burn, so tempo comes from where Presence goes, not only from cards.",
+ strong:["Area damage that scales with Fire","Damage from Presence placement frees up card plays","Explosive mid-game"],
+ weak:["Adds blight, so it can flip the blight card fast, especially in small games","Burns allies' lands and Dahan if careless","Hard to plan rigidly; very board-dependent"],
+ pairs:[["Vital Strength of the Earth","Vital's defence and blight control offset Wildfire's collateral damage."],["Stone's Unyielding Defiance","Stone takes blight from the box and thrives in the scorched lands Wildfire leaves."],["Keeper of the Forbidden Wilds","Regrow from Roots cleans up blight in Jungles and Wetlands."]],
+ setup:null,
+ open:[
+  {g:"Add a Presence from the Card Plays track (the no-draft option).",c:"Asphyxiating Smoke.",p:"Where the placement's fire does the most good.",why:"Placing Presence is one of your actions. The first card-play slots also unlock Fire for Firestorm."},
+  {g:"Gain a Minor and add a Presence from the Energy track.",c:"Threatening Flames.",p:"A land with an Explorer and Town to empty.",why:"An early draft while keeping one-card turns cheap. You can swap the turn 1 and 2 plays if you need to clear a Town fast."},
+  {g:"Add a Presence from the Card Plays track again.",c:"Flame's Fury plus Flash-Fires or the Minor.",p:"Toward the lands you plan to burn.",why:"Second play plus 2 Fire. Watch the blight card: this line adds a lot of blight early, so pace placements around team blight tolerance."}],
+ conf:"Community standard", src:["hub:wildfire-opening1","hub:wildfire-concepts","bgg:2313791"]
+},
+{
+ id:"serpent", name:"Serpent Slumbering Beneath the Island", exp:"Feather & Flame", cx:"High", el:["Earth","Moon","Fire","Water"], land:"deep",
+ tag:"Older than the island. Slowly, the stone begins to breathe.",
+ wins:"Serpent starts nearly asleep: capped at 5 Presence on the island, with gifts that strengthen allies rather than hitting Invaders. As it absorbs Presence (its own or, with permission, an ally's), the cap rises, its tracks rocket into huge energy and elements, and its final innate can damage every land on the island.",
+ strong:["Ally support from the start (gifts of plays, elements, energy)","Late-game power that dwarfs other spirits","Hitting Major Power thresholds with its wide element spread"],
+ weak:["Very slow early game","The Presence cap must be managed","Absorb Essence needs allies' buy-in"],
+ pairs:[["Vital Strength of the Earth","Gift of Flowing Power gives Vital the extra play it starves for."],["Lightning's Swift Strike","Fire and plays from Serpent's gifts supercharge Lightning's innate."],["Bringer of Dreams and Nightmares","Primordial Deeps feeds Bringer Moon/Earth for its Majors."]],
+ setup:"1 Presence in land #5.",
+ open:[
+  {g:"Pick two: +1 energy and gain a Minor, plus add a Presence from the Card Plays track.",c:"Gift of Flowing Power or Gift of the Primordial Deeps on an ally.",p:"Touching several lands of one terrain, ideally a Build land.",why:"Rush 2 plays so the innate is available. Give the slow ally an extra play, or a fast ally Minor access."},
+  {g:"Same growth; Presence from the Card Plays track.",c:"Absorb Essence plus Elemental Aegis.",p:"A land with a Town, or next to several Ravage lands.",why:"Absorb nets 3 energy, gives an ally an element and raises your cap. Aegis defends your land and its neighbours."},
+  {g:"Gain 4 energy and add a Presence from the Energy track.",c:"Your other gift plus the weaker Minor.",p:"Spread for Major targeting next turn.",why:"Banks energy and uncovers 'any element' so turn 4 can take a Major and still afford it."}],
+ conf:"Community standard", src:["codex:serpent-slumbering-beneath-the-island","bgg:2282835","wiki:Serpent_Slumbering_Beneath_the_Island"]
+},
+{
+ id:"downpour", name:"Downpour Drenches the World", exp:"Feather & Flame", cx:"High", el:["Water","Plant","Air"], land:"rain",
+ tag:"The rain that never stops. Everything floods, slows, and drowns.",
+ wins:"Downpour stalls. Spending Water lets it repeat the powers it plays, so even 2 card plays act like 4 or 5. Its Presence moves easily through the wet, and it drags games long by smothering Builds and Ravages while allies or Majors finish the job.",
+ strong:["Extraordinary stalling","Repeating powers with Water","Presence mobility"],
+ weak:["Low raw damage","Repeating Majors only comes very late","Games run long, so it needs a closer"],
+ pairs:[["Lightning's Swift Strike","Lightning brings the kills Downpour won't."],["Ocean's Hungry Grasp","Water spirits that stall the coast and drown it together."],["Thunderspeaker","Downpour buys time for Dahan war parties to form up."]],
+ setup:null,
+ open:[
+  {g:"Gain a Minor and add a Presence from the Card Plays track.",c:"One card; Gift of Abundance is a good default.",p:"Toward the first Ravage.",why:"Unlock 2 plays as fast as possible. Downpour's power is repetition, not volume."},
+  {g:"Add a Presence from the Card Plays track.",c:"Two cards.",p:"Spread for reach.",why:"Two plays plus repeats already answer most early threats."},
+  {g:"Reclaim and gain a Minor.",c:"Two cards.",p:"None this turn.",why:"From turn 4, go down the Energy track and alternate. Water and energy are what let you repeat, and repeats are the whole plan."}],
+ conf:"Established", src:["hub:downpour-opening1","codex:downpour-drenches-the-world","bgg:2496834"]
+},
+{
+ id:"finder", name:"Finder of Paths Unseen", exp:"Feather & Flame", cx:"Very High", el:["Moon","Air","Water"], land:"paths",
+ tag:"It knows the ways between places that shouldn't connect.",
+ wins:"Finder moves things. It opens paths between distant lands, isolates lands so Invaders can't explore into them, and relocates Towns and Cities wherever it wants. It loses Presence when its own actions destroy Invaders, so it plays controller and lets teammates (or one big Major) do the killing.",
+ strong:["Creating Invader-free safe zones","Isolating lands to block Explores","Moving Cities, which few spirits can do"],
+ weak:["Penalized for destroying Invaders","Very high complexity; changes the board's shape","Needs a hammer on the team"],
+ pairs:[["Lightning's Swift Strike","Finder herds the buildings; Lightning destroys them."],["Thunderspeaker","Finder delivers Invaders straight into Dahan war parties."],["Bringer of Dreams and Nightmares","Another non-destroyer; together they win on fear and control."]],
+ setup:"1 Presence in land #3 on your board, 1 in land #1 on any board. Starts with 6 uniques.",
+ open:[
+  {g:"Add a Presence from the top track and gain a Minor.",c:"A Circuitous and Wending Journey.",p:"An inner land building a City, to push its Town or City toward the starting lands.",why:"Take a Minor with Air (Air plus Water is ideal) so the innates come online next turn."},
+  {g:"Add a Presence from the top track, plus a temporary card play.",c:"Offer Passage Between Worlds and Traveler's Boon.",p:"For innate range.",why:"Sun/Water on the track plus Moon/Air from cards fires Lay Paths and Close the Ways. Boon helps a slower spirit reach a problem land."},
+  {g:"Add a Presence from the bottom track, plus a temporary card play.",c:"Ways of Shore and Heartland and Aid from the Spirit-Speakers.",p:"Coastal lands to isolate, or inner lands covering several Stage II Explores.",why:"The Earth uncovered here unlocks level 2 Lay Paths. Reclaim on turn 5 and take a Minor or Major."}],
+ conf:"Established", src:["codex:finder-of-paths-unseen","bgg:2493091","wiki:Finder_of_Paths_Unseen"]
+},
+{
+ id:"trickster", name:"Grinning Trickster Stirs Up Trouble", exp:"Jagged Earth", cx:"Moderate", el:["Moon","Fire","Air","Animal"], land:"crossroads",
+ tag:"Chaos at the crossroads. Somebody always pays, and it's rarely the Trickster.",
+ wins:"Trickster wins by meddling. Strife turns Invaders against each other, and its innate Let's See What Happens resolves a random Minor at full power, then lets you keep it and gain energy. It plays lots of cheap cards and leans on that innate for energy.",
+ strong:["High card plays early","Strife and indirect damage","Flexible, surprising answers"],
+ weak:["Randomness; it can whiff","Very energy-tight, sensitive to events","Removing blight costs it Presence"],
+ pairs:[["Thunderspeaker","Strife plus Dahan makes Ravages backfire on the Invaders."],["Lightning's Swift Strike","Lightning provides reliable removal under the chaos."],["Vital Strength of the Earth","Vital handles blight cleanup Trickster is penalized for."]],
+ setup:"1 Presence in the highest-numbered land with Dahan, 1 in land #4.",
+ open:[
+  {g:"Pick two: gain a Minor, and add a Presence from the Card Plays track.",c:"A 0-cost Minor plus Overenthusiastic Arson, or Impersonate Authority plus Incite the Mob.",p:"Near the first Ravage.",why:"Look for a 0-cost Moon/Fire/Air Minor. It unlocks Let's See What Happens without wrecking your energy."},
+  {g:"Pick two: Presence from the Card Plays track, and gain energy equal to your card plays.",c:"Three cards totaling 2 Moon, 1 Fire, 2 Air for level 2 Let's See What Happens.",p:"Spread Strife's reach.",why:"Level 2 lets you forget a card to keep the random Minor plus 1 energy, which is your main income."},
+  {g:"Pay to Reclaim, and add a Presence from the Card Plays track.",c:"Three cards, again hitting level 2.",p:"Toward 4 plays by turn 5.",why:"Balance hand cost carefully, since this line can't sustain much above 3 energy. Never forget Incite the Mob or Impersonate Authority."}],
+ conf:"Established", src:["hub:trickster-opening2","codex:grinning-trickster-stirs-up-trouble","bgg:2502216"]
+},
+{
+ id:"lure", name:"Lure of the Deep Wilderness", exp:"Jagged Earth", cx:"Moderate", el:["Moon","Plant","Animal","Air"], land:"deepwild",
+ tag:"The forest that calls them in, and never lets them leave.",
+ wins:"Lure owns the interior. It can't put Presence on the coast, so it draws Invaders inland instead, gathering Explorers off the shore and swallowing them in the deep wild with Beasts and fear. Its innates come online early on cheap, well-elemented uniques.",
+ strong:["Inland control and fear","Gathering Invaders off the coast","Strong innates from cheap uniques"],
+ weak:["Coastal lands","Tight energy and few card gains","Slow first couple of turns"],
+ pairs:[["Ocean's Hungry Grasp","The classic split: Ocean takes the coast, Lure takes the interior."],["Many Minds Move as One","More Beasts to swallow Invaders with."],["Sharp Fangs Behind the Leaves","Beasts plus Jungles on both sides."]],
+ setup:null,
+ open:[
+  {g:"Pick two: add a Presence from the Card Plays track, and gain a Minor (prefer Moon/Air or Plant/Animal).",c:"Gift of the Untamed Wild and Perils of the Deepest Island.",p:"Inland, near the first Explore.",why:"Unlocks level 2 on both innates on turn 1."},
+  {g:"Pick two: Presence from the Card Plays track, plus the energy/element growth.",c:"Softly Beckon Ever Inward and Swallowed by the Wilderness.",p:"Where you'll gather coastal Invaders toward.",why:"Pull Explorers off the coast before they build, then swallow them where your Beasts wait."},
+  {g:"Reclaim, plus energy (if you must answer a City) or a Minor.",c:"Two cards.",p:"None this turn.",why:"Pair one energy turn with one card gain each reclaim cycle. Prefer 0-cost Minors, since energy is tight."}],
+ conf:"Established", src:["hub:lure-opening1","codex:lure-of-the-deep-wilderness","bgg:2510069"]
+},
+{
+ id:"manyminds", name:"Many Minds Move as One", exp:"Jagged Earth", cx:"Moderate", el:["Air","Animal"], land:"swarm",
+ tag:"A thousand wings, one will.",
+ wins:"Many Minds is a swarm. Its Sacred Sites count as Beasts, it pushes and gathers Beasts up to two lands away, and its innate Beset and Confound the Invaders turns piles of Beasts into fear and big Defend values. Outright fear victories are realistic in smaller games.",
+ strong:["Stalling defence","Fear generation","Mobility of Beasts and Presence"],
+ weak:["No offence of its own at the start","Beast events and Fear Cards swing unpredictably","Needs a damage partner"],
+ pairs:[["Sharp Fangs Behind the Leaves","Beasts everywhere, and Fangs makes them bite."],["Lightning's Swift Strike","Lightning brings the destruction the swarm lacks."],["Thunderspeaker","Defended lands plus Dahan war parties clear the board."]],
+ setup:"1 Presence and 1 Beasts in a land with Beasts. Starts with 5 uniques.",
+ open:[
+  {g:"Add two Presence (range 1 and range 0), one from each track.",c:"Ever-Multiplying Swarm plus Guide the Way on Feathered Wings.",p:"Stack for an instant Sacred Site, which counts as Beasts.",why:"Double placement plus the swarm puts Beasts on the board immediately, and the plays track starts climbing."},
+  {g:"Two Presence again, both from the Card Plays track.",c:"Three cards.",p:"Toward the next Ravage.",why:"Rush plays. Many Minds' uniques are very cheap, so card plays turn straight into fear and Defend."},
+  {g:"Reclaim and gain a Minor (prefer 0-cost, Air/Animal).",c:"Three cards; keep one Air back if aiming for level 2 next turn.",p:"None this turn.",why:"Your starting hand alone can power both innates. From turn 7 you can reclaim-loop if the board allows."}],
+ conf:"Established", src:["hub:mm-opening1","codex:many-minds-move-as-one","bgg:2502110"]
+},
+{
+ id:"memory", name:"Shifting Memory of Ages", exp:"Jagged Earth", cx:"Moderate", el:["Moon","Air","Earth"], land:"strata",
+ tag:"Every layer of stone remembers. It can teach you any of them.",
+ wins:"Shifting Memory remembers. It prepares element markers it can spend later, teaches elements to allies, and has phenomenal energy growth. It starts with little board impact, but wants Major Powers early and often, and can play two on turn 3.",
+ strong:["Early Major Powers","Element support for allies' thresholds","Huge energy growth"],
+ weak:["Little board impact early","Depends on Major draws","Needs teammates to hold lands for 2 to 3 turns"],
+ pairs:[["Thunderspeaker","Prepared elements push Lead the Furious Assault to higher levels."],["Vital Strength of the Earth","Vital's triple-element innate loves taught elements."],["Bringer of Dreams and Nightmares","Two Major-hungry spirits; Memory feeds Bringer's thresholds."]],
+ setup:"2 Presence in the highest-numbered Sands or Mountain. Prepare 1 Sun, 1 Moon and 1 Air marker.",
+ open:[
+  {g:"Gain a Major Power and add a Presence from the Energy track.",c:"Study the Invaders' Fears (fear teams) or Boon of Ancient Memories (high-play allies). Forget the other starter for the Major.",p:"Toward the first problem land.",why:"Target a 3 to 6 cost Major. Prepare an element for its threshold or for an ally."},
+  {g:"Gain another Major and add a Presence from the Card Plays track.",c:"Elemental Teachings and Share Secrets of Survival.",p:"A Ravaging land for Secrets.",why:"Look for a mid-cost Major that shares elements with the first. Teachings can keep elements for you or give 3 to an ally."},
+  {g:"Gain 9 energy.",c:"Both Majors (about 12 energy available).",p:"None this turn.",why:"A prepared Moon can fill the last threshold. Even after giving elements away, this turn outpaces almost any other spirit."}],
+ conf:"Established", src:["codex:shifting-memory-of-ages","bgg:2506389","bgg:2915319"]
+},
+{
+ id:"stone", name:"Stone's Unyielding Defiance", exp:"Jagged Earth", cx:"Moderate", el:["Earth","Plant","Sun"], land:"granite",
+ tag:"The mountain does not move. Let them break themselves against it.",
+ wins:"Stone sits in the worst lands on purpose. Where it stands, blight comes from the box instead of the Blight Card, its Presence shrugs off damage, and its innate Let Them Break Themselves Against the Stone turns a Ravage's own damage back on the Invaders. It sprinkles Badlands to boost everyone's damage.",
+ strong:["Mitigating Ravages and blight","Supporting allies' worst lands","Badlands damage boosts for the team"],
+ weak:["Slow, with little mobility","Doesn't stop Explores or Builds","Low card plays"],
+ pairs:[["Heart of the Wildfire","Stone absorbs the blight Wildfire generates."],["Lightning's Swift Strike","Lightning clears the builds Stone ignores."],["A Spread of Rampant Green","Two of the stingiest defenders in the game together."]],
+ setup:"1 Presence in the lowest-numbered Mountain without Blight; 1 in an adjacent land with Dahan (or Sands).",
+ open:[
+  {g:"Add a Presence from the top track and gain 3 energy.",c:"Jagged Shards (Badlands and Dahan shuttling) or Plows Shatter on Rocky Ground.",p:"An unoccupied terrain type with a Town or City, ideally Ravaging next turn.",why:"Being in Ravaging lands is the whole job. Shards preps Solidity and Badlands; Plows answers an Explore into a Town land."},
+  {g:"Add a Presence from the top track and gain 3 energy again.",c:"Stubborn Solidity plus the other starter.",p:"Into a Ravaging land.",why:"Solidity guarantees a favourable trade in the Ravage."},
+  {g:"Reclaim, add a Presence from the Card Plays track, gain 2 Earth.",c:"Whatever fits the Ravage.",p:"A distant Mountain, or doubling up in a blighted land.",why:"5 Earth reaches level 2 Let Them Break Themselves. A standard Explorer, Town and City Ravage now kills both buildings."}],
+ conf:"Established", src:["codex:stones-unyielding-defiance","bgg:2512536","wiki:Stone's_Unyielding_Defiance"]
+},
+{
+ id:"volcano", name:"Volcano Looming High", exp:"Jagged Earth", cx:"Moderate", el:["Fire","Earth","Air"], land:"volcano",
+ tag:"Pressure building under the peak, waiting for the moment it breaks.",
+ wins:"Volcano lives in Mountains and stockpiles Presence. When the moment is right, it erupts: destroying its own Presence to deal area damage and fear that scales with how much it destroyed. Its Badlands and fiery uniques fill the gaps between blasts.",
+ strong:["Huge burst damage around its Mountains","Badlands support","Building toward one decisive turn"],
+ weak:["Mountains only","Eruptions cost Presence and add blight","Timing: Invaders may not give you enough time"],
+ pairs:[["Stone's Unyielding Defiance","Mountains, Badlands, and Stone shrugs off the blight."],["Vital Strength of the Earth","Vital holds the line while pressure builds."],["River Surges in Sunlight","River pushes Invaders into the blast radius."]],
+ setup:"1 Presence and 1 Badlands in a Mountain of your choice; push all Dahan from that land.",
+ open:[
+  {g:"Add two Presence, both from the Energy track.",c:"Lava Flows.",p:"Stack your Mountain; choose a Mountain near the coast at setup.",why:"Put Badlands where you'll want extra damage next turn, and decide when you plan to erupt."},
+  {g:"Add two Presence, both from the Card Plays track.",c:"Rain of Ash or Pyroclastic Bombardment.",p:"Keep stacking.",why:"A small two-Presence eruption is possible: it hits level 1 Furnace, loses only one Presence, and keeps the range boost. Bombardment answers a Town; Rain answers distant Builds and Explores."},
+  {g:"Either take a Fire Minor plus a Presence from the Card Plays track, or add two Presence (one per track) to erupt again.",c:"Exaltation plus remaining cards.",p:"Into the Mountain you want to reposition to.",why:"Choose between consolidating and erupting. Reclaim next turn and aim for a cheap Major or element-rich Minors."}],
+ conf:"Established", src:["codex:volcano-looming-high","bgg:2508259","gdrive:tepidgoose-volcano"]
+},
+{
+ id:"mist", name:"Shroud of Silent Mist", exp:"Jagged Earth", cx:"High", el:["Moon","Water","Air"], land:"fog",
+ tag:"Fog that drifts in, and settlers that are never quite seen again.",
+ wins:"Mist erodes. Its Presence drifts around the board each turn, and it gains energy and fear from lands where Invaders are hurt and frightened. It wins slowly, wearing down lands, generating steady fear and keeping Ravages manageable.",
+ strong:["Steady fear","Mobility","Strong mid-game once 3 plays arrive"],
+ weak:["Little burst damage","Presence movement takes planning","Slow scaling to 3 plays"],
+ pairs:[["Lightning's Swift Strike","Lightning delivers the burst Mist can't."],["Sharp Fangs Behind the Leaves","Damage plus Mist's fear and drift."],["Vengeance as a Burning Plague","Two attrition spirits that grind the Invaders down together."]],
+ setup:null,
+ open:[
+  {g:"Add two Presence, one from each track.",c:"The Fog Closes In plus Flowing and Silent Forms Dart By.",p:"Aim to leave two lands with damaged Invaders.",why:"Hits level 1 of both innates and starts the damaged-lands engine."},
+  {g:"Reclaim and gain a Minor.",c:"Enough for the left innate (e.g. Unnerving Pall plus Forms Dart By).",p:"Try to make a third land with a damaged Invader.",why:"Three such lands earn a bonus energy and extra fear."},
+  {g:"Gain a Minor and add a Presence from the Card Plays track.",c:"Two cards.",p:"Toward the next Ravage.",why:"Stable two-play turns until 3 plays arrive on turn 5."}],
+ conf:"Established", src:["hub:mist-opening1","codex:shroud-of-silent-mist","bgg:2488254"]
+},
+{
+ id:"vengeance", name:"Vengeance as a Burning Plague", exp:"Jagged Earth", cx:"High", el:["Fire","Animal","Water"], land:"plague",
+ tag:"It feeds on the wound. The worse it gets, the hotter it burns.",
+ wins:"Vengeance gets stronger as things go wrong. It starts with one Presence already destroyed, Disease tokens stop Builds, and its innates turn blight and lost Presence into damage and fear. It can be a late-game juggernaut, sometimes by letting a Build happen on purpose.",
+ strong:["Late-game power","Disease to stop Builds","Thriving on blighted, losing boards"],
+ weak:["Weak early","Risky, and it can make teammates nervous","Needs things to go a little wrong"],
+ pairs:[["Stone's Unyielding Defiance","Stone soaks the blight Vengeance invites."],["Many Minds Move as One","The swarm stalls while the plague grows."],["Shroud of Silent Mist","Two attrition spirits."]],
+ setup:"One Presence starts destroyed. 1 Presence in a land with Blight, 1 in a Wetland without Blight.",
+ open:[
+  {g:"+1 energy, gain a Minor (Fire over Animal), add a Presence from the Energy track.",c:"Fetid Breath Spreads Infection.",p:"A buildingless land near an ally's board.",why:"Disease on a Town that just explored stops a City, or on an empty explored land it farms a Build."},
+  {g:"Add two Presence, one per track, chosen for elements.",c:"Plaguebearers plus the Minor.",p:"In a Ravaging land (and another board with Disease).",why:"Choose a path: Epidemics Run Rampant for utility, or Savage Revenge by letting a Ravage take one Presence."},
+  {g:"Two Presence again, finishing toward 3 energy a turn.",c:"Strike Low with Sudden Fevers plus Fiery Vengeance.",p:"Both into the Ravaging land if you're on the Savage Revenge path.",why:"Fiery Vengeance boosts allies. Reclaim next turn and seek a Minor matching your first one's elements."}],
+ conf:"Established", src:["codex:vengeance-as-a-burning-plague","bgg:2484534","bgg:2709070"]
+},
+{
+ id:"fractured", name:"Fractured Days Split the Sky", exp:"Jagged Earth", cx:"Very High", el:["Moon","Air","Sun"], land:"splitsky",
+ tag:"A sky cracked open on days that never happened.",
+ wins:"Fractured Days bends time. It collects Time, keeps a private pool of cards from 'days that never were', freezes a land out of time with Absolute Stasis, and helps allies replay or reclaim. It starts very limited but supports the whole table brilliantly once set up.",
+ strong:["Support: helping allies reclaim, repeat and go fast","Sweeping indirect effects","Flexible card access"],
+ weak:["Weak start","Some uniques need setup and may sit unused","Very high complexity"],
+ pairs:[["Lightning's Swift Strike","Fractured's timing tricks double Lightning's burst turns."],["Vital Strength of the Earth","Helping Vital reclaim and replay its expensive cards is huge value."],["Thunderspeaker","Blur the Arc positions Dahan for the Furious Assault."]],
+ setup:"3 Presence: 1 in the lowest-numbered land with 1 Blight, 2 in the highest-numbered land without Blight. Deal your 'Days That Never Were' cards.",
+ open:[
+  {g:"Gain Sun, move a Presence, gain a Minor That Never Was, gain 3 Time.",c:"That Minor, picked for effect rather than elements.",p:"Set up a Sacred Site next turn so Absolute Stasis can target.",why:"Time is the currency that makes your uniques work."},
+  {g:"Gain Moon and a Minor, add a Presence from the Energy track, +2 card plays this turn, +1 Time.",c:"Absolute Stasis, Blur the Arc of Years, The Past Returns Again.",p:"In range of the problem Build or Ravage.",why:"Pay Time for Stasis on the worst land. All three levels of Slip the Flow of Time become available; target yourself for fast Visions."},
+  {g:"Decide from the board: Major That Never Was, help an ally reclaim, or chase tier 3 Slip the Flow.",c:"Per that choice.",p:"Per that choice.",why:"Every branch leaves a turn or more before you need to Reclaim All."}],
+ conf:"Community standard", src:["codex:fractured-days-split-the-sky","bgg:2486927","gdoc:inediblecake-fractured"]
+},
+{
+ id:"starlight", name:"Starlight Seeks Its Form", exp:"Jagged Earth", cx:"Very High", el:["Moon","Air","Earth","Fire","Water","Plant","Animal","Sun"], anyEl:true, land:"starfield",
+ tag:"A new spirit still deciding what it will become.",
+ wins:"Starlight builds itself as it goes. It has six Presence tracks, unlocks new Growth choices as tracks empty, and makes chosen elements permanent. It can become a Major-slinger, a card-play engine or an element battery depending on what it drafts.",
+ strong:["Total flexibility","Hitting Major thresholds with chosen elements","Adapting to the team's gaps"],
+ weak:["Highest decision load in the game","Weak until it commits","Little early impact on other players' boards"],
+ pairs:[["Lightning's Swift Strike","Lightning covers early tempo while Starlight takes shape."],["Ocean's Hungry Grasp","Starlight can grow into whatever inland answers Ocean lacks."],["River Surges in Sunlight","River's energy and pushes buy Starlight time."]],
+ setup:"1 Presence in a land with Blight.",
+ open:[
+  {g:"Add a Presence from track 1 (covers Reclaim options), gain a Minor, move a Presence, +1 energy.",c:"Boon of Reimagining plus Shape the Self Anew, or a strong Moon Minor.",p:"Position for Peace of the Nighttime Sky next turn.",why:"Draft element pairs; Moon cards are gold. Using Shape before Boon gives more forget options."},
+  {g:"Add a Presence from track 3 (+1 energy), gain a Major, move a Presence, +1 energy.",c:"Peace of the Nighttime Sky plus a Moon Minor or Shape.",p:"Move before adding if Peace needs it.",why:"Forget Boon for the Major."},
+  {g:"Gain a Major, move a Presence, add from track 3 (pick an element, +1 energy), +1 energy.",c:"Major plus Minor.",p:"Per your Majors' targeting.",why:"Pick the element that completes a Major threshold. Forget the first Major if it didn't work out."}],
+ conf:"Community standard", src:["codex:starlight-seeks-its-form","bgg:2518429","reddit:m7hi5a"]
+}
+];
+
+// Part C: Horizons of Spirit Island + Nature Incarnate.
+const SPIRITS_C = [
+{
+ id:"teeth", name:"Devouring Teeth Lurk Underfoot", exp:"Horizons", cx:"Low", el:["Fire","Animal","Earth"], land:"maw",
+ tag:"The ground itself opens its jaws.",
+ wins:"Teeth wants to stand right where the Invaders are. Its Range 0 powers chew through whatever shares its land, it can lay down a massive Defend, and its innate gives it a little mobility. Its uniques are potent but pricey, so it handles a few big problems better than many small ones.",
+ strong:["Crushing one big problem land","Huge single-land Defend","Simple to play"],
+ weak:["Few card plays","Expensive uniques","Range 0: it has to be there"],
+ pairs:[["Sun-Bright Whirlwind","Whirlwind clears the scattered explorers Teeth can't reach."],["Eyes Watch from the Trees","Defence and Dahan counterattacks cover Teeth's narrow reach."],["River Surges in Sunlight","River pushes Invaders into Teeth's jaws."]],
+ setup:"1 Presence in land #5.",
+ open:[
+  {g:"Add a Presence from the Card Plays track.",c:"Herd Them to Their Doom and Ferocious Assault.",p:"Where a big Defend matters this turn or next.",why:"Target about 3 energy a turn and 2 plays as your baseline."},
+  {g:"Add a Presence from the Energy track and gain a Minor.",c:"Gift of Furious Might and Mark Territory with Scars and Teeth.",p:"Into the land you'll chew next.",why:"Energy pays for your expensive uniques."},
+  {g:"Same again: Energy track plus a Minor.",c:"The two Minors.",p:"Toward the next problem.",why:"Reclaim on turn 4 and aim for a third play within about three turns. You can lean Major or Minor from here."}],
+ conf:"Community standard", src:["codex:devouring-teeth-lurk-underfoot","obsidian:teeth-standard","wiki:Devouring_Teeth_Lurk_Underfoot"]
+},
+{
+ id:"eyes", name:"Eyes Watch from the Trees", exp:"Horizons", cx:"Low", el:["Moon","Plant","Air"], land:"watchwood",
+ tag:"Something in the canopy is always watching.",
+ wins:"Eyes defends, and then fights back. When it Defends a land it can gather Dahan in, turning a stall into a counterattack. It earns steady fear and clears Explored lands with eerie pushes and abductions.",
+ strong:["Defending Ravages","Steady fear","Turning defence into Dahan kills"],
+ weak:["Built-up Cities","Slow to reach 3 plays","Needs Dahan nearby"],
+ pairs:[["Devouring Teeth Lurk Underfoot","Teeth crushes what Eyes holds still."],["Sun-Bright Whirlwind","Whirlwind scatters explorers while Eyes protects."],["Thunderspeaker","More Dahan, better counterattacks."]],
+ setup:"2 Presence in the highest-numbered Jungle.",
+ open:[
+  {g:"Add two Presence, both from the Energy track.",c:"Eerie Noises and Moving Trees.",p:"Near the built lands.",why:"Push explorers out of one built land, and set up to defend the other next turn."},
+  {g:"Add two Presence, one from each track (2 energy, 2 plays, extra Plant).",c:"Mysterious Abductions and Whispered Guidance.",p:"A Sacred Site in the last Explored land.",why:"Triggers level 2 of the innate. Abductions clears the Explored land and Guidance sets up a counterattack."},
+  {g:"Add a Presence (Energy track), gain a Moon Minor, +1 energy.",c:"Boon of Watchful Guarding plus the Minor.",p:"Toward the next Ravage.",why:"The Moon triggers the innate again. Reclaim on turn 4, then go two placements on Card Plays for 3 plays on turn 5."}],
+ conf:"Community standard", src:["codex:eyes-watch-from-the-trees","bgg:2939010","wiki:Eyes_Watch_from_the_Trees"]
+},
+{
+ id:"mud", name:"Fathomless Mud of the Swamp", exp:"Horizons", cx:"Low", el:["Water","Moon","Earth"], land:"swamp",
+ tag:"Bottomless and patient. Whatever is built here sinks.",
+ wins:"Mud bogs down construction. Its Presence where Invaders would Build makes Towns and Cities hard to raise, its innate oozes outward to damage settlements, and it generates plenty of fear from sheer misery. In small games it can cut the deep inland off from Explores entirely.",
+ strong:["Preventing Builds","Fear","Cutting off inland lands in small games"],
+ weak:["Re-establishing Presence after oozing outward","Raw damage to big stacks","Positioning-dependent"],
+ pairs:[["Rising Heat of Stone and Sand","Heat finishes what Mud has weakened."],["Lightning's Swift Strike","Lightning clears what Mud has slowed."],["Eyes Watch from the Trees","Defence plus Build denial makes a quiet board."]],
+ setup:"2 Presence in the lowest-numbered Wetland.",
+ open:[
+  {g:"Add two Presence (one from each track), adjacent so they form a Sacred Site.",c:"Open Shifting Waterways and Foul Vapors.",p:"Next to the biggest inland problem.",why:"Level 2 innate damages a Town and Waterways finishes it; Vapors pushes an Explorer to stop a Build, and the Dahan end up ready to counterattack."},
+  {g:"Add two Presence, both from the Energy track (3 energy a turn).",c:"Intractable Thickets (Defend 5) and Exaltation of Tangled Growth (on yourself, to fetch a Major).",p:"Spread toward problems.",why:"Defend 5 plus 2 Dahan can destroy a City and Explorer."},
+  {g:"Gain a Minor, +2 energy, add a Presence from the Energy track.",c:"Your Major plus the Minor.",p:"In range of the consolidated City.",why:"A good Major here (Pillar of Living Flame, Jungle Hungers) can win a solo game outright."}],
+ conf:"Adapted", src:["codex:fathomless-mud-of-the-swamp","bgg:2959811","wiki:Fathomless_Mud_of_the_Swamp"]
+},
+{
+ id:"heat", name:"Rising Heat of Stone and Sand", exp:"Horizons", cx:"Low", el:["Fire","Air","Earth"], land:"dunes",
+ tag:"Shimmering heat that saps the strength from anything that stands too long.",
+ wins:"Heat weakens, then destroys. Invaders at its Sacred Sites are easier to kill, so every spirit's damage goes further there. It sets up kill zones, pushes Invaders into them, and lets cheap damage finish off Towns and Cities.",
+ strong:["Making the whole team's damage more effective","Kill zones","Simple, efficient turns"],
+ weak:["Needs Sacred Sites in the right place","Lands outside its zones","Low innate damage early"],
+ pairs:[["Fathomless Mud of the Swamp","Mud slows the Build; Heat burns what's left."],["Lightning's Swift Strike","Cheap damage hits harder in Heat's zones."],["Thunderspeaker","Weakened Invaders die to fewer Dahan."]],
+ setup:"2 Presence in the highest-numbered Sands.",
+ open:[
+  {g:"Gain a Minor (look for Fire/Air/Earth, like Steam Vents), +2 energy, add a Presence from the Card Plays track.",c:"Steam Vents and Stinging Sandstorm.",p:"Into the starting Town land to make a Sacred Site.",why:"Kill an Explorer to stop a Build; one damage then finishes a weakened Town at your Sacred Site."},
+  {g:"Same option: Minor, +2 energy, Presence from the Card Plays track.",c:"Two cards that push Invaders into your kill zone and protect a land.",p:"A coastal land.",why:"Consolidate Invaders where your rule makes them fragile, and reach 3 plays next turn."},
+  {g:"Add two Presence from the Card Plays track into a Mountain.",c:"Sweltering Exhaustion plus Gift of Searing Heat (on yourself).",p:"Mountain Sacred Site.",why:"A deliberately quieter turn that sets up a devastating reclaim turn 4."}],
+ conf:"Adapted", src:["codex:rising-heat-of-stone-and-sand","bgg:2955905","wiki:Rising_Heat_of_Stone_and_Sand"]
+},
+{
+ id:"whirlwind", name:"Sun-Bright Whirlwind", exp:"Horizons", cx:"Low", el:["Sun","Air"], land:"whirlwind",
+ tag:"Blinding sun and spinning dust. Nothing stays where it landed.",
+ wins:"Whirlwind is the explorer-sweeper. It clears newly Explored lands before they Build, pushing Invaders around with fast Air. It can focus on energy, chase high innate levels with card plays, or go balanced, but it adds only one Presence a turn, so it can't do everything.",
+ strong:["Clearing fresh Explores","Fast pushes","Simple, flexible plans"],
+ weak:["Established Towns and Cities","One Presence per turn","Energy-tight"],
+ pairs:[["Devouring Teeth Lurk Underfoot","Whirlwind sweeps; Teeth handles big stacks."],["Ocean's Hungry Grasp","Pushes toward the sea become drownings."],["Thunderspeaker","Fast pushes line Invaders up for the Dahan."]],
+ setup:"3 Presence: 1 in the highest-numbered Sands, 2 in the lowest-numbered Mountain.",
+ open:[
+  {g:"Gain a Minor (cheapest one with Air) and add a Presence from the Card Plays track.",c:"Gift of Sunlit Vigor plus the Minor.",p:"Toward the first Explores.",why:"Air is the innate's bottleneck; aim for roughly twice as much Air as Sun."},
+  {g:"Add a Presence from the Card Plays track.",c:"Gift of Wind-Sped Steps, Scatter to the Winds, Tempest of Wings and Claws.",p:"Spread for reach.",why:"A big sweep turn while your hand is full."},
+  {g:"Reclaim and draw 2 cards.",c:"Plan for turn 5: you need 2 Sun and 3 Air in plays for level 3.",p:"None this turn.",why:"Deliberately underplay turns 3 and 4 to set up a powerful turn 5."}],
+ conf:"Community standard", src:["codex:sun-bright-whirlwind","obsidian:whirlwind-standard","wiki:Sun-Bright_Whirlwind"]
+},
+{
+ id:"behemoth", name:"Ember-Eyed Behemoth", exp:"Nature Incarnate", cx:"Moderate", el:["Fire","Earth","Plant"], land:"emberjungle",
+ tag:"Something huge walks the burning jungle, and the ground shakes with it.",
+ wins:"Behemoth has an Incarna, a physical body on the board, that slowly stomps around smashing Invaders. Badlands raise its damage, and its innate Smash, Stomp and Flatten levels up with Fire and Earth. Steady, consistent and hard-hitting.",
+ strong:["Consistent damage every turn","Badlands synergy","Clearing built-up lands near its Incarna"],
+ weak:["Slow Incarna movement","Energy can get tight","Far-flung problems"],
+ pairs:[["Stone's Unyielding Defiance","Shared Badlands make every hit count."],["Sun-Bright Whirlwind","Whirlwind handles the explorers Behemoth is too slow for."],["River Surges in Sunlight","River pushes Invaders into the Behemoth's path."]],
+ setup:null,
+ open:[
+  {g:"Gain a Minor and add a Presence from the Card Plays track.",c:"Surging Lahar plus Exaltation of Grasping Roots (or Blazing Intimidation plus Grasping Roots).",p:"Toward Lahar targets.",why:"Two Fire and one Earth unlock Smash, Stomp and Flatten. Early Badlands from Lahar pay off for the rest of the game."},
+  {g:"Add a Presence from the Energy track.",c:"Two cards; aim for level 2 of the innate.",p:"Where the Incarna will stomp next.",why:"Banks energy for Terrifying Rampage later."},
+  {g:"Reclaim and Empower your Incarna.",c:"Two cards.",p:"None this turn.",why:"An empowered Incarna is the spirit's real engine. Push to 3 plays on turn 4."}],
+ conf:"Community standard", src:["hub:behemoth-opening1","bgg:behemoth-pktt","wiki:Ember-Eyed_Behemoth"]
+},
+{
+ id:"hearth", name:"Hearth-Vigil", exp:"Nature Incarnate", cx:"Moderate", el:["Sun","Earth","Animal","Air"], land:"hearth",
+ tag:"The watcher at the village fire. Under its eye, the Dahan do not fall.",
+ wins:"Hearth-Vigil makes the Dahan nearly unkillable in its lands: they get +4 Health, events can't harm them, and its innate lets them strike before the Invaders during Ravages. It gathers Dahan to its Presence (its Presence follows them out) and wins by letting Ravages happen into overwhelming Dahan counterattacks.",
+ strong:["Protecting Dahan","Clearing Ravaging lands for very few actions","Very strong overall"],
+ weak:["Blight still lands, even when Dahan survive","Few direct answers to Cities that aren't Ravaging","Slow to reposition"],
+ pairs:[["Thunderspeaker","More Dahan, more war parties. A Dahan-centric team."],["Sun-Bright Whirlwind","Whirlwind herds Invaders into Hearth's fortified villages."],["Vital Strength of the Earth","Vital's defence blunts the blight Hearth absorbs."]],
+ setup:"3 Presence: 1 in the highest-numbered land with Dahan, 2 in the lowest-numbered land with at least 2 Dahan; add 1 Dahan to each. Start with 1 energy.",
+ open:[
+  {g:"Gain a Power Card and add a Presence into a land with Dahan.",c:"Call to Vigilance (fear plus a push toward a land you're ready to fight in).",p:"A land where gathered Dahan can meet the first Ravage.",why:"Use the innate's gather to pull Dahan where the first Ravage will hit. Push a Town into ground you control."},
+  {g:"Add a Presence (range 2) from the Card Plays track and gain 3 energy.",c:"Favors of Story and Season plus another starter.",p:"Toward the coast or the next Ravage terrain.",why:"Favors moves Dahan and lets you keep a card. Start walking Dahan toward the next Ravage."},
+  {g:"Same growth or Reclaim depending on hand.",c:"Favors of Story and Season plus Surrounded by the Dahan.",p:"Where Surrounded's Isolate cuts off the next Explore.",why:"Warn of Impending Conflict lets Dahan strike first so no Dahan die. Surrounded adds fear and isolates a land."}],
+ conf:"Adapted", src:["bgg:3257005","wiki:Hearth-Vigil","reddit:1du8urd"]
+},
+{
+ id:"roots", name:"Towering Roots of the Jungle", exp:"Nature Incarnate", cx:"Moderate", el:["Sun","Plant","Earth","Moon"], land:"bigtree",
+ tag:"One vast tree, older than memory, sheltering everything beneath it.",
+ wins:"Roots is a sanctuary. Its Incarna is a giant tree: Invaders and Dahan can't be damaged there, and Vitality tokens prevent blight. Its innates draw Invaders toward it and remove them from the island. It can also play aggressively, using its movement growth to chase down Explorers before they act.",
+ strong:["Protecting lands around its Incarna","Removing Invaders outright","Gaining powers easily"],
+ weak:["Constrained Incarna movement","Low fear","Can stall without progressing if played too passively"],
+ pairs:[["Lure of the Deep Wilderness","Two gather-and-remove spirits that empty the interior."],["Lightning's Swift Strike","Lightning brings the progress Roots can lack."],["Thunderspeaker","Dahan sheltered at the tree survive to counterattack elsewhere."]],
+ setup:"3 Presence and the Incarna: Incarna plus 1 Presence in the highest-numbered Jungle without Blight; 1 in the highest Mountain; 1 in the highest Wetland.",
+ open:[
+  {g:"Take the growth that moves the Incarna, adds Presence at long range and gains energy. Presence from the top track.",c:"Radiant and Hallowed Grove to remove a fresh Explorer, or Blooming of the Rocks and Trees to add Wilds.",p:"Incarna to the land about to Build or Ravage.",why:"Tempo first: remove Invaders before they act. The extra energy matters more than the Vitality."},
+  {g:"Add Vitality at the Incarna and a Presence; switch to the bottom track if you need plays.",c:"Two uniques that remove or protect.",p:"Grow toward Sun/Moon/Earth lands.",why:"Use Vitality where blight would cost you. Against Russia, building toward Empowering is stronger."},
+  {g:"Move the Incarna again or Reclaim, depending on hand.",c:"Prioritize Plant, then Sun.",p:"Toward the next problem.",why:"You get strong at 4 energy and 3 plays. Grab a Plant Major you can threshold."}],
+ conf:"Adapted", src:["codex:towering-roots-of-the-jungle","bgg:3136487","reddit:1brgxwu"]
+},
+{
+ id:"breath", name:"Breath of Darkness Down Your Spine", exp:"Nature Incarnate", cx:"High", el:["Moon","Air","Animal"], land:"night",
+ tag:"Alone in the dark, someone vanishes. Nobody saw it happen.",
+ wins:"Breath abducts. When its powers would damage or destroy a lone Invader, it's moved into The Endless Dark instead, generating fear and staying off the board while Breath downgrades it. Its mobile Incarna hunts isolated Invaders, but every growth lets pieces escape, and reclaiming lets them out in bulk.",
+ strong:["Removing lone Invaders, even Cities, with a single damage","Steady fear from the Endless Dark","Mobile Incarna"],
+ weak:["Built-up lands with many Invaders","Reclaim turns release everything","Managing escapes is a puzzle"],
+ pairs:[["Heart of the Wildfire","Wildfire's damage boosts let Breath kill one Invader and abduct the next."],["Sun-Bright Whirlwind","Whirlwind scatters stacks into lone, abductable Invaders."],["Lightning's Swift Strike","Lightning handles the crowded lands Breath can't."]],
+ setup:"Incarna plus 1 Presence in the lowest-numbered Jungle; 1 Presence in the highest-numbered Jungle. The Endless Dark starts with 1 piece.",
+ open:[
+  {g:"Gain a Power Card and add a Presence from the top track (two pieces may escape).",c:"Swallowed by the Endless Dark plus Reach from the Infinite Darkness.",p:"Near the first Explore, ideally a City land on a Jungle board.",why:"Swallowed answers a fresh Explore; Reach stocks the Endless Dark with pieces you can release later instead of Invaders."},
+  {g:"The same growth, top track.",c:"Two cards. Use the innate to clear an Explorer, then abduct the lone building with one damage.",p:"Incarna into a land with an Explorer plus a Town.",why:"Pure top track reaches the Empowered Incarna before your first reclaim. Empowered, it abducts a Town or Explorer for free each fast phase."},
+  {g:"Top track again, or switch to bottom against wide Adversaries.",c:"Two cards.",p:"Keep the Incarna central.",why:"Go top track against 'tall' Adversaries like England, bottom track against wide ones."}],
+ conf:"Adapted", src:["codex:breath-of-darkness-down-your-spine","bgg:3140699","reddit:16pgnoq"]
+},
+{
+ id:"gaze", name:"Relentless Gaze of the Sun", exp:"Nature Incarnate", cx:"High", el:["Sun","Fire","Air"], land:"zenith",
+ tag:"Noon that never ends. It burns the same ground again and again.",
+ wins:"Gaze stacks Presence three-high and repeats power cards from those stacks, paying a bit more energy each time. Its innate moves the whole stack and scorches the target land. It's single-minded: better at obliterating one big problem than fixing many small ones, and very good at taking in Invaders from other boards.",
+ strong:["Clearing big, built-up lands","High energy income for repeats","Restoring destroyed Presence"],
+ weak:["Low card plays early","Many small problems at once","Its own innate can add blight and hurt Dahan"],
+ pairs:[["Fathomless Mud of the Swamp","Mud slows the board while Gaze burns the worst spots."],["River Surges in Sunlight","River pushes Invaders into Gaze's stack."],["Vital Strength of the Earth","Vital defends the many small lands Gaze ignores."]],
+ setup:"2 Presence and 1 Badlands in the lowest-numbered Sands.",
+ open:[
+  {g:"Always add a Presence; take the double-energy and move-three-Presence option, from the top track.",c:"Focus the Sun's Rays (pairs with level 1 of the innate) or Unbearable Gaze to clear two lands.",p:"Move the stack where it threatens the most.",why:"The energy doubling plus moving the stack is your tempo turn."},
+  {g:"Add a Presence from the Card Plays track and gain a Minor.",c:"The other unique.",p:"Toward a second stack site.",why:"Build a Minor supply early so you can space out reclaims. Prioritize a Moon card for the second innate."},
+  {g:"Card Plays track again, plus another Minor.",c:"Two cards; blight-adding powers are better than usual for you.",p:"Toward 3 plays.",why:"Build toward 3 plays and 3 energy, then shift to reclaim and repeat turns."}],
+ conf:"Community standard", src:["codex:relentless-gaze-of-the-sun","bgg:3140073","wiki:Relentless_Gaze_of_the_Sun"]
+},
+{
+ id:"voice", name:"Wandering Voice Keens Delirium", exp:"Nature Incarnate", cx:"High", el:["Air","Moon","Sun"], land:"windsong",
+ tag:"A keening on the wind that drives men to madness.",
+ wins:"Voice's Incarna roams the island, spreading Strife and chasing Dahan and Invaders around. The more Air it has, the faster and further it moves. It's very positional: Strife makes Invaders hurt each other, and its powers turn confusion into damage and fear.",
+ strong:["Mobility","Strife, so Invaders hurt themselves","Positional control"],
+ weak:["Needs lots of Air","Raw damage to big stacks","Positioning mistakes compound"],
+ pairs:[["Thunderspeaker","Strife plus Dahan makes every Ravage a disaster for the Invaders."],["Grinning Trickster Stirs Up Trouble","Strife on Strife."],["Lightning's Swift Strike","Lightning cleans up the chaos."]],
+ setup:"Incarna plus 1 Presence in land #6; 1 Presence in land #7.",
+ open:[
+  {g:"Add two Presence, both from the top track.",c:"Twist Perceptions, or Frightful Keening if a land needs solving.",p:"Toward the first problem.",why:"Rush the Air on the top track; Air drives the Incarna's movement."},
+  {g:"Gain a Minor (prioritize Air) and add a Presence from the Card Plays track.",c:"Two Air cards. Pay energy for Turmoil's Touch rather than discarding.",p:"Where the Incarna wants to go next.",why:"Card plays and Air together make the innate consistent."},
+  {g:"Two Presence from the top track if you drafted Air; otherwise the Minor option again.",c:"Two cards.",p:"Reclaim next turn.",why:"Sets up a strong mid-game with reliable Air and Incarna movement."}],
+ conf:"Community standard", src:["codex:wandering-voice-keens-delirium","bgg:3139454","wiki:Wandering_Voice_Keens_Delirium"]
+},
+{
+ id:"waters", name:"Wounded Waters Bleeding", exp:"Nature Incarnate", cx:"High", el:["Water","Animal"], land:"redriver",
+ tag:"A river poisoned at its source, healing into something fierce.",
+ wins:"Wounded Waters starts hurt, losing a Presence or a power card each turn. As it heals it chooses Healing Cards that reshape its nature: roiling and fearsome, or serene and controlling. It starts with 4 energy and heals into whatever the game needs.",
+ strong:["Adaptable mid-game identity","Good energy start","Fear (Roiling) or control (Serene) paths"],
+ weak:["Painful first turns","Commits to a healing path early","High complexity"],
+ pairs:[["Thunderspeaker","Waters' Dahan and Animal play suits a Dahan-heavy table."],["Many Minds Move as One","Beast-centric Majors and Roiling healing synergize."],["Vital Strength of the Earth","Vital's defence covers Waters' weak early turns."]],
+ setup:"2 Presence in a land with Dahan; 2 Presence plus 1 Blight (from the box) in the highest-numbered land with a Setup symbol. Start with 4 energy.",
+ open:[
+  {g:"Forced growth: gain a Minor and add a Presence.",c:"A Water or Animal Minor to support healing.",p:"Out of harm's way.",why:"Put your first bleeding token on R1."},
+  {g:"Forced growth again.",c:"Another Minor.",p:"Toward the next problem.",why:"Put the second token on R2 so both healing options stay open."},
+  {g:"Gain a Major.",c:"Major plus Minor.",p:"Per targeting.",why:"Let the draft choose your first Healing Card: Beast Majors point toward Roiling Waters, control Majors toward Serene Waters."}],
+ conf:"Community standard", src:["codex:wounded-waters-bleeding","bgg:3141249","gdoc:hito-waters"]
+},
+{
+ id:"due", name:"Dances Up Earthquakes", exp:"Nature Incarnate", cx:"Very High", el:["Earth","Moon","Fire"], land:"fault",
+ tag:"A dance that builds for years, and ends with the ground coming apart.",
+ wins:"Dances can make cards Impending: setting them aside with energy on them, gaining more each turn until they play themselves for free on a later turn. That lets it 'play' huge Majors with no money. Its innates add Quake tokens and defend while cards build, then cash in for enormous earthquakes once many cards are in play together.",
+ strong:["Playing expensive Majors cheaply","One or two devastating turns","Defending while it builds"],
+ weak:["Solving problems now versus later","Very high complexity","Early positioning of Quake tokens matters"],
+ pairs:[["Vital Strength of the Earth","Vital holds the board while the dance builds."],["Hearth-Vigil","Dahan counterattacks cover the slow early turns."],["Fractured Days Split the Sky","Timing tricks on a timing spirit."]],
+ setup:"1 Presence in the highest-numbered land with Dahan. Starts with 6 uniques.",
+ open:[
+  {g:"Gain a Power Card and add a Presence from the top track.",c:"Make your two 3-cost uniques Impending.",p:"Where Quake tokens will matter.",why:"Commit to the top track until you unlock the extra Impending play. Its energy and the move-a-Presence slot keep you positioned."},
+  {g:"Same growth, top track.",c:"Make the 2-cost unique Impending; play an Earth card so the left innate can Defend.",p:"Spread Quakes toward Town/City lands.",why:"Keep at least one card in play, since the innates need it."},
+  {g:"Same growth; take a cheap Major.",c:"Make the Major and a cheap Minor Impending (you now have an extra Impending play).",p:"Set up the turn-4 quake.",why:"This lines up a 7-card turn 4 for the full right innate. The designers tuned against pure rushing, so sustained impending is a valid, steadier alternative."}],
+ conf:"Community standard", src:["reddit:158jdeo","codex:dances-up-earthquakes","bgg:3107804"]
+}
+];
+
+// "Where it's found" chapters for the Field Notebook. Every spirit id from spirits_a/b/c.js appears exactly once.
+const HABITATS = [
+ {id:"sky",   name:"Storm and Sky",        spirits:["lightning","thunderspeaker","manyminds","whirlwind","fractured","starlight","voice"]},
+ {id:"coast", name:"Coast and Waterline",  spirits:["ocean","finder"]},
+ {id:"wet",   name:"Wetland",              spirits:["river","mist","downpour","mud","waters","vengeance"]},
+ {id:"jungle",name:"Jungle",               spirits:["green","keeper","fangs","lure","eyes","roots","behemoth"]},
+ {id:"stone", name:"Mountain and Stone",   spirits:["vital","stone","volcano","teeth","due"]},
+ {id:"sands", name:"Sands",                spirits:["bringer","heat","gaze","memory","wildfire","trickster"]},
+ {id:"night", name:"Night and Underearth", spirits:["shadows","serpent","breath","hearth"]}
+];
+
+</script>
+<script>
+(function(){
+const S=[...SPIRITS_A,...SPIRITS_B,...SPIRITS_C];
+const byId=Object.fromEntries(S.map(s=>[s.id,s]));
+const byName=Object.fromEntries(S.map(s=>[s.name,s]));
+const TABC={sky:"--t-sky",coast:"--t-coast",wet:"--t-wet",jungle:"--t-jungle",stone:"--t-stone",sands:"--t-sands",night:"--t-night"};
+// specimen order follows the habitat chapters
+const ORDER=[];HABITATS.forEach(h=>h.spirits.forEach(id=>{const s=byId[id];s.hab=h;s.no=ORDER.length+1;ORDER.push(s)}));
+const CAP={lightning:"Fork strike on open grassland",thunderspeaker:"Anvil cloud over the valley",manyminds:"Leaf-drift spiralling on the wind",whirlwind:"Dust column under a white sun",fractured:"A sky cracked into other days",starlight:"Stars settling toward a seed",voice:"Wind-combed grass on the moor",ocean:"Breaker over the rock shelf",finder:"A path between the sea stacks",river:"Spring flood across the plain",mist:"Fog bank over still marsh",downpour:"Rain curtains on the lowland",mud:"Sucking mud, a half-sunk log",waters:"A river running red at its source",vengeance:"Fever-swamp, stumps smouldering",green:"Vine tide over the clearing",keeper:"Thorn wall, ember flowers",fangs:"Claw-torn bark in the undergrowth",lure:"A path into the deep wood",eyes:"Moonlit canopy, watched from above",roots:"Buttress roots of the great tree",behemoth:"A crushed, smouldering track",vital:"Granite shoulder above the valley",stone:"Monolith in the high valley",volcano:"Crater glow, ash column",teeth:"Fissure lined with rock teeth",due:"Fault line across the valley",bringer:"Moonlit dunes, shifting shapes",heat:"Mesa in the noon heat",gaze:"Noon sun on cracked ground",memory:"Banded strata in the canyon wall",wildfire:"Grassfire line across the savanna",trickster:"Dust devil at the crossroads",shadows:"Campfire shadows at dusk",serpent:"Basalt ridge, steaming spring",breath:"Mist trail through a dark wood",hearth:"Hearth ring on the hilltop"};
+const EX=["Base Game","Branch & Claw","Jagged Earth","Feather & Flame","Horizons","Nature Incarnate"];
+const CX=["Low","Moderate","High","Very High"];
+const EL=["Sun","Moon","Fire","Air","Water","Earth","Plant","Animal"];
+const F={x:new Set,c:new Set,e:new Set};
+let cur=null,day=0;
+const $=id=>document.getElementById(id);
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pad=n=>String(n).padStart(2,"0");
+const pass=s=>(!F.x.size||F.x.has(s.exp))&&(!F.c.size||F.c.has(s.cx))&&(!F.e.size||[...F.e].every(e=>s.el.includes(e)));
+const any=()=>F.x.size||F.c.size||F.e.size;
+
+function src(k){const i=k.indexOf(":"),t=k.slice(0,i),v=k.slice(i+1);
+  const L={wiki:["Spirit Island Wiki","https://spiritislandwiki.com/index.php?title="+encodeURIComponent(v).replace(/%2F/g,"/")],
+    codex:["Dahan Codex","https://dahan-codex.com/spirits/"+v],
+    bgg:["BGG thread","https://boardgamegeek.com/thread/"+v],
+    reddit:["r/spiritisland","https://www.reddit.com/r/spiritisland/comments/"+v+"/"],
+    hub:["Spirit Island Hub","https://latentoctopus.github.io/"]}[t];
+  const nm={gtg:"Greater Than Games guide",steam:"Steam guide",gdoc:"community doc",gdrive:"community doc",obsidian:"community notes"}[t];
+  if(L)return `<a href="${esc(L[1])}" target="_blank" rel="noopener">${L[0]}${t=="wiki"&&v.includes("/")?" ("+esc(v.split("/").pop().replace(/_/g," "))+")":""}</a>`;
+  return esc(nm||t)}
+
+function indexHTML(){
+  const opt=(arr,key)=>arr.map(v=>`<button class="opt" aria-pressed="${F[key].has(v)}" data-k="${key}" data-v="${esc(v)}">${esc(v)}</button>`).join("");
+  const n=ORDER.filter(pass).length;
+  return `<section class="index" aria-label="Find a specimen by trait">
+    <h2>Index by trait <span class="fcount" aria-live="polite">${any()?`${n} of 37 <button class="clear" data-clear>Clear</button>`:"All 37"}</span></h2>
+    <div class="fgroup"><span>Expedition</span>${opt(EX,"x")}</div>
+    <div class="fgroup"><span>Complexity</span>${opt(CX,"c")}</div>
+    <div class="fgroup"><span>Element</span>${opt(EL,"e")}</div></section>`}
+function clearF(){F.x.clear();F.c.clear();F.e.clear();update()}
+function wireFilters(){
+  document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{const s=F[b.dataset.k];s.has(b.dataset.v)?s.delete(b.dataset.v):s.add(b.dataset.v);update();const t=document.querySelector(`.opt[data-k="${b.dataset.k}"][data-v="${b.dataset.v}"]`);t&&t.focus({preventScroll:true})});
+  document.querySelectorAll("[data-clear]").forEach(b=>b.onclick=clearF)}
+function tabs(){
+  const t=[`<button class="tab" style="--tc:var(--t-contents)" data-go="contents" aria-current="${!cur}">Contents</button>`].concat(HABITATS.map(h=>{
+    const m=h.spirits.filter(id=>pass(byId[id])).length;
+    return `<button class="tab${m?"":" empty"}" style="--tc:var(${TABC[h.id]})" data-hab="${h.id}" aria-current="${!!cur&&cur.hab.id==h.id}">${esc(h.name)}${any()?` <small>${m}</small>`:""}</button>`}));
+  $("tabs").innerHTML=t.join("");
+  $("tabs").querySelectorAll(".tab").forEach(b=>b.onclick=()=>{
+    if(b.dataset.go)return go("contents");
+    const h=HABITATS.find(x=>x.id==b.dataset.hab);const first=h.spirits.map(i=>byId[i]).find(pass)||byId[h.spirits[0]];go(first.id)});
+}
+function neighbours(){const list=ORDER.filter(pass);const i=list.indexOf(cur);
+  if(i<0)return[null,list[0]||null];return[list[i-1]||null,list[i+1]||null]}
+
+function contents(){
+  const sp=$("spread");sp.classList.remove("flip");
+  $("left").innerHTML=`<div class="title-page">
+    <h1>Field Notes on the Spirits <i>of the Island</i></h1>
+    <p class="sub">37 specimens, sorted by where they are found</p>
+    <div class="found"><b>If found</b>please return to the Dahan village by the river. The observer is somewhere inland and would like their notes back.</div>
+    <dl class="key">
+      <dt><span class="meta">Jagged Earth</span></dt><dd>Each entry opens with its expedition (expansion), complexity and elements.</dd>
+      <dt><span class="meta">Day 1–3</span></dt><dd>The opening log walks through the first three turns: growth, cards, presence, and why.</dd>
+      <dt><span class="meta">Established</span></dt><dd>How settled each opening is. Established: written up in several guides. Community standard: the usual forum line. Adapted: pieced together from partial sources, so test it first.</dd>
+    </dl>${indexHTML()}</div>`;
+  const r=$("right");r.className="page right plain";
+  const n=ORDER.filter(pass).length;
+  r.innerHTML=`<p class="kicker"><span>Contents</span><span>${any()?n+" match":""}</span></p><div class="toc">${HABITATS.map(h=>`
+    <section><h2><i style="background:var(${TABC[h.id]})"></i>${esc(h.name)}</h2><ol>${h.spirits.map(id=>{const s=byId[id];
+      return `<li class="${pass(s)?"":"out"}"><a href="#${s.id}"><span class="n">${pad(s.no)}</span><span class="t">${esc(s.name)}</span><span class="d"></span><span class="c">${esc(s.cx.toLowerCase())}</span></a></li>`}).join("")}</ol></section>`).join("")}</div>
+    ${n?"":`<p class="none">Nothing in the notebook matches every filter. Loosen one.</p>`}`;
+}
+
+function spirit(){
+  const s=cur,[pv,nx]=neighbours(),h=s.hab,o=s.open[day];
+  const sp=$("spread");sp.classList.remove("flip");void sp.offsetWidth;sp.classList.add("flip");
+  const assoc=p=>{const t=byName[p[0]];return `<li>${t?`<a href="#${t.id}">${esc(p[0])}</a>`:`<span class="nm">${esc(p[0])}</span>`}${esc(p[1])}</li>`};
+  $("left").innerHTML=`<div class="plate-col">
+     <figure class="plate">
+       <img src="plates/${s.id}.webp" width="720" height="894" alt="Watercolor field sketch: ${esc(CAP[s.id].toLowerCase())}."></figure>
+     <p class="caption"><b>Pl. ${s.no}.</b> ${esc(CAP[s.id])}.</p>
+     <section class="assoc"><h2>Associated species</h2><ul>${s.pairs.map(assoc).join("")}</ul></section>
+   </div>
+   ${pv?`<button class="turn prev" data-go="${pv.id}">← ${pad(pv.no)} ${esc(pv.name.split(" ")[0])}</button>`:`<button class="turn prev" data-go="contents">← Contents</button>`}`;
+  const r=$("right");r.className="page right";
+  r.innerHTML=`
+   <p class="kicker"><span>Specimen ${pad(s.no)} / 37</span><span>${esc(h.name)}</span></p>
+   ${any()?`<p class="filtered">Index filter on: ${ORDER.filter(pass).length} of 37 in page turns<button data-clear>Clear</button></p>`:""}
+   <h1 class="name">${esc(s.name)}</h1>
+   <p class="tagline">${esc(s.tag)}</p>
+   <p class="marks meta">${esc(s.exp)} · Complexity ${esc(s.cx)} · ${s.el.map(esc).join(" / ")}</p>
+   <div class="notes">
+     <h2 class="sec">How it wins</h2>
+     <aside class="margin-notes"><b>Setup</b>${esc(s.setup)}</aside>
+     <p>${esc(s.wins)}</p>
+     <div class="pm"><div><h2 class="sec">Leans on</h2><ul class="plus">${s.strong.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
+       <div><h2 class="sec">Watch for</h2><ul class="minus">${s.weak.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div></div>
+     <section class="log" aria-label="Opening log">
+       <div class="log-head"><h2 class="sec">Opening log</h2><small>${esc(s.conf)} opening</small></div>
+       <ol class="daybar" aria-label="Opening turns">${[0,1,2].map(i=>`<li><button data-d="${i}" class="${i<day?"done":""}" ${i==day?'aria-current="step"':""}><span class="dot">${i+1}</span><b>Day ${i+1}</b><span>Turn ${i+1}</span></button></li>`).join("")}</ol>
+       <div class="entry" id="entry" aria-live="polite">
+         <dl><dt>growth</dt><dd>${esc(o.g)}</dd><dt>cards</dt><dd>${esc(o.c)}</dd><dt>presence</dt><dd>${esc(o.p)}</dd></dl>
+         <p class="why">${esc(o.why)}</p>
+         <div class="pager">${day>0?`<button data-d="${day-1}">← Day ${day}</button>`:""}${day<2?`<button class="primary" data-d="${day+1}">Next: Day ${day+2} →</button>`:`<button class="primary" data-d="0">Back to Day 1</button>`}</div>
+       </div>
+     </section>
+     <p class="refs">Refs: ${s.src.map(src).join(" · ")}</p>
+   </div>
+   ${nx?`<button class="turn next" data-go="${nx.id}">${pad(nx.no)} ${esc(nx.name.split(" ")[0])} →</button>`:`<button class="turn next" data-go="contents">Contents →</button>`}`;
+  r.querySelectorAll("[data-d]").forEach(b=>b.onclick=()=>{day=+b.dataset.d;spiritDayOnly()});
+}
+function spiritDayOnly(){const keepY=window.scrollY;const sp=$("spread");spirit();sp.classList.remove("flip");window.scrollTo(0,keepY);
+  const b=document.querySelector(".pager .primary");b&&b.focus({preventScroll:true});
+  wireFilters();document.querySelectorAll("#spread [data-go]").forEach(x=>x.onclick=()=>go(x.dataset.go))}
+
+function go(id){if(location.hash!=="#"+id)location.hash=id;else route()}
+function route(){
+  const id=location.hash.slice(1);const s=byId[id];
+  if(s){if(s!==cur){cur=s;day=0;if(window.scrollY>200)document.querySelector(".book").scrollIntoView({block:"start"})}}else cur=null;
+  render()}
+function update(){
+  if(cur&&!pass(cur)){const n=cur.hab.spirits.map(i=>byId[i]).find(pass)||ORDER.find(pass);if(n){cur=n;day=0;history.replaceState(null,"","#"+n.id)}}
+  render()}
+function render(){tabs();cur?spirit():contents();wireFilters();
+  document.querySelectorAll("#spread [data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go))}
+window.addEventListener("hashchange",route);
+document.addEventListener("keydown",e=>{if(!cur||e.target.closest("input,textarea")||e.metaKey||e.ctrlKey||e.altKey)return;
+  const[pv,nx]=neighbours();if(e.key=="ArrowRight"&&nx)go(nx.id);if(e.key=="ArrowLeft")go(pv?pv.id:"contents")});
+route();
+})();
+</script>
+
+</body>
+</html>
